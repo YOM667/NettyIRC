@@ -1,6 +1,5 @@
-package me.youm.server;
+package me.youm.ircserver.server;
 
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;

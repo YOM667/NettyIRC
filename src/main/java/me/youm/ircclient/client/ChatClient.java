@@ -1,17 +1,18 @@
-package me.youm.client;
+package me.youm.ircclient.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import me.youm.client.command.Command;
-import me.youm.client.command.CommandManager;
+import me.youm.ircclient.command.CommandManager;
+import me.youm.ircclient.entity.User;
 
-import java.util.List;
 import java.util.Scanner;
 
 
 public class ChatClient {
+
+    public static User user = new User();
     public CommandManager commandManager = new CommandManager();
     public void init(){
         commandManager.init();

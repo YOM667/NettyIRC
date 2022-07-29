@@ -1,6 +1,5 @@
-package me.youm.server;
+package me.youm.ircserver.server;
 
-import com.sun.corba.se.internal.CosNaming.BootstrapServer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelOption;

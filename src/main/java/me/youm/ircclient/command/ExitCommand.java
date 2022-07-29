@@ -1,4 +1,4 @@
-package me.youm.client.command;
+package me.youm.ircclient.command;
 
 public class ExitCommand extends Command{
     public ExitCommand() {

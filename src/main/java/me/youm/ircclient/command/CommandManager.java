@@ -1,4 +1,4 @@
-package me.youm.client.command;
+package me.youm.ircclient.command;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class CommandManager {
     public void init() {
         this.commands = new ArrayList<>();
         this.commands.add(new ExitCommand());
-        this.commands.add(new FuckCommand());
+        this.commands.add(new Nick());
     }
     public List<Command> getCommands() {
         return commands;

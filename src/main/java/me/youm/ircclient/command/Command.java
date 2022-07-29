@@ -1,7 +1,4 @@
-package me.youm.client.command;
-
-import java.util.HashMap;
-import java.util.Map;
+package me.youm.ircclient.command;
 
 public abstract class Command {
     private String name;
