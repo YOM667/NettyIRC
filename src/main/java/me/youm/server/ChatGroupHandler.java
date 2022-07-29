@@ -24,7 +24,7 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
         channels.add(inComing);
         for (Channel c : channels) {
             if(c!=inComing){
-                c.writeAndFlush("[欢迎:]"+inComing.remoteAddress()+"进入聊天室");
+                c.writeAndFlush("[欢迎:]  "+inComing.remoteAddress()+"  进入聊天室" + "\n");
             }
         }
     }
@@ -35,7 +35,7 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
         channels.remove(outComing);
         for (Channel c : channels) {
             if(c!=outComing){
-                c.writeAndFlush("[拜拜:]"+outComing.remoteAddress()+"离开聊天室");
+                c.writeAndFlush("[拜拜:]  "+outComing.remoteAddress()+"  离开聊天室" + "\n");
             }
         }
         super.handlerRemoved(ctx);
@@ -44,14 +44,13 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        log.info(channel.remoteAddress() + "在线");
-
+        System.out.println(channel.remoteAddress() + "  在线");
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        log.info(channel.remoteAddress() + "离线");
+        System.out.println(channel.remoteAddress() + "  离线");
         super.channelInactive(ctx);
     }
 
@@ -59,10 +58,13 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
         Channel channel = channelHandlerContext.channel();
         for (Channel c : channels) {
+
+            System.out.println("[用户  "+channel.remoteAddress()+"  说:]  "+s +"\n");
+
             if(c!=channel){
-                c.writeAndFlush("[用户"+channel.remoteAddress()+"说:]"+s +"\n");
+                c.writeAndFlush("[用户  "+channel.remoteAddress()+"  说:]  "+s +"\n");
             }else {
-                c.writeAndFlush("[我说:]"+channel.remoteAddress() + s+"\n");
+                c.writeAndFlush("[我  "+channel.remoteAddress()+"  说:]  " + s+"\n");
 
             }
         }
