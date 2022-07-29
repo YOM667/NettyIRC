@@ -1,14 +1,14 @@
 package me.youm.client.command;
 
-public class ExitCommand extends Command{
-    public ExitCommand() {
-        super("exit",new String[]{"e"});
+public class FuckCommand extends Command{
+    public FuckCommand() {
+        super("fuck",new String[]{"f"});
     }
 
     @Override
     public String execute(String[] args) {
-        if(args[0].equalsIgnoreCase("/exit")){
-            System.exit(1);
+        if(args[0].equalsIgnoreCase("/fuck")){
+                System.out.println("sb");
         }else {
             System.out.println("你输入的命令有误请重新输入");
         }

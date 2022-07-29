@@ -10,6 +10,7 @@ public class CommandManager {
     public void init() {
         this.commands = new ArrayList<>();
         this.commands.add(new ExitCommand());
+        this.commands.add(new FuckCommand());
     }
     public List<Command> getCommands() {
         return commands;
@@ -17,7 +18,7 @@ public class CommandManager {
     public boolean contrast(String message){
         String[] args = message.split(" ");
         for (Command command : commands) {
-            if(args[0].startsWith(suffix)){
+            if(args[0].startsWith(suffix) && args[0].equalsIgnoreCase("/" + command.getName())){
                 command.execute(args);
                 return false;
             }

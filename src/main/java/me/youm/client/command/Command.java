@@ -5,9 +5,19 @@ import java.util.Map;
 
 public abstract class Command {
     private String name;
+    private String[] alias;
 
-    public Command(String name) {
+    public String[] getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String[] alias) {
+        this.alias = alias;
+    }
+
+    public Command(String name,String[] alias) {
         this.name = name.toLowerCase();
+        this.alias = alias;
     }
     public String getName() {
         return name;
