@@ -7,10 +7,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import lombok.extern.slf4j.Slf4j;
 
-
-@Slf4j
 public class Server {
     private int port;
 
@@ -41,10 +38,9 @@ public class Server {
             .option(ChannelOption.SO_BACKLOG,200)
             .option(ChannelOption.SO_KEEPALIVE,true);
             Channel channel = serverBootstrap.bind("127.0.0.1",1145).sync().channel();
-
             channel.closeFuture().sync();
         } catch (InterruptedException e) {
-            log.error("server error", e);
+            e.printStackTrace();
         } finally {
             boss.shutdownGracefully();
             worker.shutdownGracefully();

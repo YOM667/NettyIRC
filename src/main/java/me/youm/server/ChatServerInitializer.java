@@ -8,9 +8,7 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
