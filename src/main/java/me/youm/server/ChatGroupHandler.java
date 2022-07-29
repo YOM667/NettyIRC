@@ -8,7 +8,9 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.EventExecutorGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     @Override
@@ -41,16 +43,28 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
+        Channel channel = ctx.channel();
+        log.info(channel.remoteAddress() + "在线");
+
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        Channel channel = ctx.channel();
+        log.info(channel.remoteAddress() + "离线");
         super.channelInactive(ctx);
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
+        Channel channel = channelHandlerContext.channel();
+        for (Channel c : channels) {
+            if(c!=channel){
+                c.writeAndFlush("[用户"+channel.remoteAddress()+"说:]"+s +"\n");
+            }else {
+                c.writeAndFlush("[我说:]"+channel.remoteAddress() + s+"\n");
 
+            }
+        }
     }
 }
