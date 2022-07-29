@@ -18,11 +18,24 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-
+        Channel inComing = ctx.channel();
+        channels.add(inComing);
+        for (Channel c : channels) {
+            if(c!=inComing){
+                c.writeAndFlush("[欢迎:]"+inComing.remoteAddress()+"进入聊天室");
+            }
+        }
     }
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        Channel outComing = ctx.channel();
+        channels.remove(outComing);
+        for (Channel c : channels) {
+            if(c!=outComing){
+                c.writeAndFlush("[拜拜:]"+outComing.remoteAddress()+"离开聊天室");
+            }
+        }
         super.handlerRemoved(ctx);
     }
 
