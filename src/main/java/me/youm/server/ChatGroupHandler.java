@@ -6,11 +6,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
-import io.netty.util.concurrent.EventExecutorGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     @Override
@@ -19,7 +16,7 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+    public void handlerAdded(ChannelHandlerContext ctx)  {
         Channel inComing = ctx.channel();
         channels.add(inComing);
         for (Channel c : channels) {
@@ -42,7 +39,7 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx)  {
         Channel channel = ctx.channel();
         System.out.println(channel.remoteAddress() + "  在线");
     }
@@ -55,7 +52,7 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) {
         Channel channel = channelHandlerContext.channel();
         for (Channel c : channels) {
 
