@@ -1,8 +1,12 @@
 package me.youm.ircclient.command;
 
+import io.netty.channel.Channel;
+
 public abstract class Command {
     private String name;
     private String[] alias;
+
+    private String des;
 
     public String[] getAlias() {
         return alias;
@@ -16,6 +20,11 @@ public abstract class Command {
         this.name = name.toLowerCase();
         this.alias = alias;
     }
+    public Command(String name,String[] alias,String des) {
+        this.name = name.toLowerCase();
+        this.alias = alias;
+        this.des = des;
+    }
     public String getName() {
         return name;
     }
@@ -23,5 +32,5 @@ public abstract class Command {
     public void setName(String name) {
         this.name = name;
     }
-    public abstract String execute(String[] args);
+    public abstract String execute(String[] args, Channel channel);
 }

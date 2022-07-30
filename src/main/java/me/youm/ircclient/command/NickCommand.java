@@ -1,5 +1,6 @@
 package me.youm.ircclient.command;
 
+import io.netty.channel.Channel;
 import me.youm.ircclient.client.ChatClient;
 
 public class NickCommand extends Command{
@@ -8,7 +9,7 @@ public class NickCommand extends Command{
     }
 
     @Override
-    public String execute(String[] args) {
+    public String execute(String[] args, Channel channel) {
         if(args.length <= 2){
             if(args[0].equalsIgnoreCase("/nick")){
                 ChatClient.user.setUserName(args[1]);

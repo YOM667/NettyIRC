@@ -53,16 +53,21 @@ public class ChatGroupHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) {
         Channel channel = channelHandlerContext.channel();
+
         for (Channel c : channels) {
+            if(!(s.startsWith("*//kes"))){
+                System.out.println("[用户  "+channel.remoteAddress()+"  说:]  "+s +"\n");
 
-            System.out.println("[用户  "+channel.remoteAddress()+"  说:]  "+s +"\n");
+                if(c!=channel){
+                    c.writeAndFlush("[用户  "+channel.remoteAddress()+"  说:]  "+s +"\n");
+                }else {
+                    c.writeAndFlush("[我  "+channel.remoteAddress()+"  说:]  " + s+"\n");
 
-            if(c!=channel){
-                c.writeAndFlush("[用户  "+channel.remoteAddress()+"  说:]  "+s +"\n");
+                }
             }else {
-                c.writeAndFlush("[我  "+channel.remoteAddress()+"  说:]  " + s+"\n");
-
+                System.out.println("hello world");
             }
+
         }
     }
 }

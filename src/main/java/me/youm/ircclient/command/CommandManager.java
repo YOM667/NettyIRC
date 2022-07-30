@@ -1,5 +1,7 @@
 package me.youm.ircclient.command;
 
+import io.netty.channel.Channel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,11 +18,11 @@ public class CommandManager {
     public List<Command> getCommands() {
         return commands;
     }
-    public boolean contrast(String message){
+    public boolean contrast(String message, Channel channel){
         String[] args = message.split(" ");
         for (Command command : commands) {
             if(args[0].startsWith(suffix) && args[0].equalsIgnoreCase("/" + command.getName())){
-                if(!(command.execute(args) == null)){
+                if(!(command.execute(args,channel) == null)){
                     return true;
                 }
                 return false;

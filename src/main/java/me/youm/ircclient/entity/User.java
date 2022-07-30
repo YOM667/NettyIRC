@@ -7,13 +7,20 @@ public class User {
     private String passWord;
     private String nickName;
 
+    private Status status;
+
     public User() {
     }
 
-    public User(String userName, String passWord, String nickName) {
+    public User(String userName, String passWord, String nickName,Status status) {
         this.userName = userName;
         this.passWord = passWord;
         this.nickName = nickName;
+        this.status = status;
+    }
+
+    public User(String userName, String passWord, String nickName) {
+        this(userName,passWord,nickName,Status.PERSON);
     }
 
     public String getUserName() {
@@ -60,5 +67,13 @@ public class User {
                 ", passWord='" + passWord + '\'' +
                 ", nickName='" + nickName + '\'' +
                 '}';
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

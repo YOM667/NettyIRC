@@ -5,6 +5,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import me.youm.ircclient.command.CommandManager;
+import me.youm.ircclient.entity.Status;
 import me.youm.ircclient.entity.User;
 
 import java.util.Scanner;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 
 public class ChatClient {
 
-    public static User user = new User();
+    public static User user = new User("ss","ss","ss", Status.ADMIN);
     public CommandManager commandManager = new CommandManager();
     public void init(){
         commandManager.init();
@@ -31,7 +32,7 @@ public class ChatClient {
 
             while (true){
                 String msg = scanner.nextLine();
-                if(commandManager.contrast(msg))
+                if(commandManager.contrast(msg,channel))
                 {
                     channel.writeAndFlush(msg+" \n");
                 }
