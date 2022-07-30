@@ -11,7 +11,7 @@ import io.netty.handler.codec.string.StringEncoder;
 public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
-    protected void initChannel(SocketChannel socketChannel) throws Exception {
+    protected void initChannel(SocketChannel socketChannel)  {
         System.out.println("有客户端进入: "+socketChannel.remoteAddress());
         ChannelPipeline pipeline = socketChannel.pipeline();
         pipeline.addLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));

@@ -18,14 +18,11 @@ public class CommandManager {
         this.commands.add(new NickCommand());
         this.commands.add(new KickCommand());
     }
-    public List<Command> getCommands() {
-        return commands;
-    }
     public boolean contrast(String message, Channel channel){
         String[] args = message.split(" ");
         for (Command command : commands) {
-            if(args[0].startsWith("/")){
-                if(args[0].equalsIgnoreCase("/" + command.getName())){
+            if(args[0].startsWith(suffix)){
+                if(args[0].equalsIgnoreCase(suffix + command.getName())){
                     if(!(command.execute(args,channel) == null)){
                         return true;
                     }else {
@@ -34,7 +31,7 @@ public class CommandManager {
                 }
             }
         }
-        if(args[0].startsWith("/")){
+        if(args[0].startsWith(suffix)){
             System.out.println("没有这个指令");
             return false;
         }

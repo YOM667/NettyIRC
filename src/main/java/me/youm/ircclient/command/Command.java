@@ -1,12 +1,10 @@
 package me.youm.ircclient.command;
 
 import io.netty.channel.Channel;
-
+@SuppressWarnings("all")
 public abstract class Command {
     private String name;
     private String[] alias;
-
-
 
     private String des;
 

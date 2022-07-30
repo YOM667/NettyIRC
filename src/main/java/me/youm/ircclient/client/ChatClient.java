@@ -5,7 +5,6 @@ import io.netty.channel.Channel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import me.youm.ircclient.command.CommandManager;
-import me.youm.ircclient.entity.Status;
 import me.youm.ircclient.entity.User;
 
 import java.util.Scanner;
@@ -20,6 +19,7 @@ import java.util.Scanner;
  * @version 0.1.5
  * @author You_M
  */
+@SuppressWarnings("all")
 public class ChatClient {
     public static ChatClient chatClient = new ChatClient();
     public static ChatClient getChatClient(){

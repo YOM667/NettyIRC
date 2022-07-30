@@ -1,7 +1,7 @@
 package me.youm.ircclient.entity;
 
 import java.util.Objects;
-
+@SuppressWarnings("all")
 public class User {
     private String userName;
     private String passWord;
