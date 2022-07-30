@@ -14,8 +14,7 @@ import java.util.Scanner;
  * <h1>客户端的代码</h1>
  * <p>用的单例设计模式</p>
  * <p>CommandManager用来进行命令模块管理</p>
- * <p>CommandManager用来进行命令模块管理</p>
- * <p>CommandManager用来进行命令模块管理</p>
+ * <p>User是么每个客户端必须要有的</p>
  */
 public class ChatClient {
     public static ChatClient chatClient = new ChatClient();
