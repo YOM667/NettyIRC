@@ -15,6 +15,10 @@ import java.util.Scanner;
  * <p>用的单例设计模式</p>
  * <p>CommandManager用来进行命令模块管理</p>
  * <p>User是么每个客户端必须要有的</p>
+ * <li> start 启动客户端
+ * <li> init 初始化所有模块
+ * @version 0.1.5
+ * @author You_M
  */
 public class ChatClient {
     public static ChatClient chatClient = new ChatClient();
