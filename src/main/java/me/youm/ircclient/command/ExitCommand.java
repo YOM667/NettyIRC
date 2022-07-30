@@ -7,10 +7,9 @@ public class ExitCommand extends Command{
 
     @Override
     public String execute(String[] args) {
-        if(args[0].equalsIgnoreCase("/exit")){
+        if(args[0].equalsIgnoreCase("/exit")) {
             System.exit(1);
-        }else {
-            System.out.println("你输入的命令有误请重新输入");
+            return "success";
         }
         return null;
     }

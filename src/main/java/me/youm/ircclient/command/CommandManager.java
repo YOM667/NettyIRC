@@ -10,7 +10,8 @@ public class CommandManager {
     public void init() {
         this.commands = new ArrayList<>();
         this.commands.add(new ExitCommand());
-        this.commands.add(new Nick());
+        this.commands.add(new NickCommand());
+        this.commands.add(new KickCommand());
     }
     public List<Command> getCommands() {
         return commands;
@@ -19,7 +20,9 @@ public class CommandManager {
         String[] args = message.split(" ");
         for (Command command : commands) {
             if(args[0].startsWith(suffix) && args[0].equalsIgnoreCase("/" + command.getName())){
-                command.execute(args);
+                if(!(command.execute(args) == null)){
+                    return true;
+                }
                 return false;
             }
         }

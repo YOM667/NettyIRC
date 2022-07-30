@@ -2,8 +2,8 @@ package me.youm.ircclient.command;
 
 import me.youm.ircclient.client.ChatClient;
 
-public class Nick extends Command{
-    public Nick() {
+public class NickCommand extends Command{
+    public NickCommand() {
         super("nick", new String[]{"n"});
     }
 
@@ -13,8 +13,7 @@ public class Nick extends Command{
             if(args[0].equalsIgnoreCase("/nick")){
                 ChatClient.user.setUserName(args[1]);
                 System.out.println(ChatClient.user.getUserName());
-            }else {
-                System.out.println("你输入的命令有误请重新输入");
+                return "success";
             }
         }
         return null;
