@@ -1,8 +1,9 @@
-package me.youm.ircclient.command;
+package me.youm.ircclient.command.commands;
 
 import io.netty.channel.Channel;
+import me.youm.ircclient.command.Command;
 
-public class ExitCommand extends Command{
+public class ExitCommand extends Command {
     public ExitCommand() {
         super("exit",new String[]{"e"});
     }

@@ -1,10 +1,11 @@
-package me.youm.ircclient.command;
+package me.youm.ircclient.command.commands;
 
 import io.netty.channel.Channel;
 import me.youm.ircclient.client.ChatClient;
+import me.youm.ircclient.command.Command;
 import me.youm.ircclient.entity.Status;
 
-public class KickCommand extends Command{
+public class KickCommand extends Command {
     public KickCommand() {
         super("kick", new String[]{"k"},"/kick [username]");
     }

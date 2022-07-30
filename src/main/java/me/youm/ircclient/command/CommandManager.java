@@ -1,6 +1,9 @@
 package me.youm.ircclient.command;
 
 import io.netty.channel.Channel;
+import me.youm.ircclient.command.commands.ExitCommand;
+import me.youm.ircclient.command.commands.KickCommand;
+import me.youm.ircclient.command.commands.NickCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +24,19 @@ public class CommandManager {
     public boolean contrast(String message, Channel channel){
         String[] args = message.split(" ");
         for (Command command : commands) {
-            if(args[0].startsWith(suffix) && args[0].equalsIgnoreCase("/" + command.getName())){
-                if(!(command.execute(args,channel) == null)){
-                    return true;
+            if(args[0].startsWith("/")){
+                if(args[0].equalsIgnoreCase("/" + command.getName())){
+                    if(!(command.execute(args,channel) == null)){
+                        return true;
+                    }else {
+                        System.out.println("格式出错");
+                    }
                 }
-                return false;
             }
+        }
+        if(args[0].startsWith("/")){
+            System.out.println("没有这个指令");
+            return false;
         }
         return true;
     }

@@ -6,6 +6,8 @@ public abstract class Command {
     private String name;
     private String[] alias;
 
+
+
     private String des;
 
     public String[] getAlias() {
@@ -33,4 +35,11 @@ public abstract class Command {
         this.name = name;
     }
     public abstract String execute(String[] args, Channel channel);
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
+    }
 }
