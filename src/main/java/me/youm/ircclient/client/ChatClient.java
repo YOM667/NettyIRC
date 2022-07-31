@@ -5,7 +5,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import me.youm.ircclient.command.CommandManager;
-import me.youm.ircclient.entity.User;
+import me.youm.entity.User;
 
 import java.util.Scanner;
 

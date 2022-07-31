@@ -1,4 +1,4 @@
-package me.youm.ircclient.entity;
+package me.youm.entity;
 
 public enum Status {
     ADMIN,

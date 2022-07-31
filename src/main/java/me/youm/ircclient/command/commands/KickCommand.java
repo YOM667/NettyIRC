@@ -3,7 +3,7 @@ package me.youm.ircclient.command.commands;
 import io.netty.channel.Channel;
 import me.youm.ircclient.client.ChatClient;
 import me.youm.ircclient.command.Command;
-import me.youm.ircclient.entity.Status;
+import me.youm.entity.Status;
 
 public class KickCommand extends Command {
     public KickCommand() {
@@ -12,7 +12,7 @@ public class KickCommand extends Command {
 
     @Override
     public String execute(String[] args, Channel channel) {
-        if(args.length <= 2 && args[0].equalsIgnoreCase("/kick")){
+        if(args.length >= 2 && args[0].equalsIgnoreCase("/kick")){
             if(ChatClient.getChatClient().getUser().getStatus().equals(Status.ADMIN)) {
                 channel.writeAndFlush("*//kes <kick|"+args[1] + ">");
             }

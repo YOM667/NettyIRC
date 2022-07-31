@@ -1,9 +1,7 @@
 package me.youm.ircclient.command;
 
 import io.netty.channel.Channel;
-import me.youm.ircclient.command.commands.ExitCommand;
-import me.youm.ircclient.command.commands.KickCommand;
-import me.youm.ircclient.command.commands.NickCommand;
+import me.youm.ircclient.command.commands.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +15,8 @@ public class CommandManager {
         this.commands.add(new ExitCommand());
         this.commands.add(new NickCommand());
         this.commands.add(new KickCommand());
+        this.commands.add(new LoginCommand());
+        this.commands.add(new RegisterCommand());
     }
     public boolean contrast(String message, Channel channel){
         String[] args = message.split(" ");

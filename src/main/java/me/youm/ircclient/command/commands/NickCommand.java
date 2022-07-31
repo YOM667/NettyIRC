@@ -3,7 +3,7 @@ package me.youm.ircclient.command.commands;
 import io.netty.channel.Channel;
 import me.youm.ircclient.client.ChatClient;
 import me.youm.ircclient.command.Command;
-import me.youm.ircclient.entity.User;
+import me.youm.entity.User;
 
 public class NickCommand extends Command {
     public NickCommand() {
@@ -13,7 +13,7 @@ public class NickCommand extends Command {
     @Override
     public String execute(String[] args, Channel channel) {
         User user = ChatClient.getChatClient().getUser();
-        if(args.length <= 2){
+        if(args.length >= 2){
             if(args[0].equalsIgnoreCase("/nick")){
                 channel.writeAndFlush("*//kes");
                 user.setUserName(args[1]);
