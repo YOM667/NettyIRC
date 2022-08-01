@@ -1,11 +1,11 @@
 package me.youm.server.message;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class Packet {
+public abstract class Packet implements Serializable {
     private final static Map<Byte, Class<? extends Packet>> packetType = new ConcurrentHashMap<>();
-
 
     static {
         packetType.put(PacketCommand.LoginRequest, LoginRequestMessage.class);
@@ -14,6 +14,7 @@ public abstract class Packet {
         packetType.put(PacketCommand.RegisterResponse, RegisterResponseMessage.class);
     }
 
+    @SuppressWarnings("all")
     public static Class<? extends Packet> get(Byte command) {
         return packetType.get(command);
     }
