@@ -3,6 +3,8 @@ package me.youm.client.command.commands;
 import io.netty.channel.Channel;
 import me.youm.client.ChatClient;
 import me.youm.client.command.Command;
+import me.youm.client.entity.User;
+import me.youm.server.protocol.message.RegisterRequestMessage;
 
 public class RegisterCommand extends Command {
     public RegisterCommand() {
@@ -13,10 +15,11 @@ public class RegisterCommand extends Command {
     public String execute(String[] args, Channel channel) {
         if(args.length >= 4 && args[0].equalsIgnoreCase("/register")){
             channel.writeAndFlush("*//kes");
-            ChatClient.getChatClient().getUser().setUserName(args[1]);
-            ChatClient.getChatClient().getUser().setPassWord(args[2]);
-            ChatClient.getChatClient().getUser().setNickName(args[3]);
-            System.out.println("注册成功");
+            User user = ChatClient.getChatClient().getUser();
+            user.setUserName(args[1]);
+            user.setPassWord(args[2]);
+            user.setNickName(args[3]);
+            channel.writeAndFlush(new RegisterRequestMessage(user.getUserName(),user.getPassWord(),user.getNickName()));
             return "success";
         }
         return null;

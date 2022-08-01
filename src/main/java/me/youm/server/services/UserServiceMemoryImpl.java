@@ -28,4 +28,17 @@ public class UserServiceMemoryImpl implements UserService {
         }
         return pass.equals(password);
     }
+
+    /**
+     * 注册
+     * @param userName 用户名
+     * @param passWord 密码
+     * @param nickName 昵称
+     * @return 注册成功返回 true, 否则返回 false
+     */
+    @Override
+    public boolean register(String userName, String passWord, String nickName) {
+        allUserMap.put(userName,passWord);
+        return true;
+    }
 }

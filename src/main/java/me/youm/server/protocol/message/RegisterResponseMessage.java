@@ -5,15 +5,18 @@ import me.youm.server.protocol.PacketCommand;
 
 public class RegisterResponseMessage extends Packet {
     private boolean success;
-    private int reason;
+    private String reason;
     private String userName;
     private String passWord;
     private String nickName;
 
     public RegisterResponseMessage() {
     }
-
-    public RegisterResponseMessage(boolean success, int reason, String userName, String passWord, String nickName) {
+    public RegisterResponseMessage(boolean success, String reason) {
+        this.success = success;
+        this.reason = reason;
+    }
+    public RegisterResponseMessage(boolean success, String reason, String userName, String passWord, String nickName) {
         this.success = success;
         this.reason = reason;
         this.userName = userName;
@@ -29,11 +32,11 @@ public class RegisterResponseMessage extends Packet {
         this.success = success;
     }
 
-    public int getType() {
+    public String getType() {
         return reason;
     }
 
-    public void setType(int reason) {
+    public void setType(String reason) {
         this.reason = reason;
     }
 

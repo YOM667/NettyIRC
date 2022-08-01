@@ -44,10 +44,7 @@ public class ChatClient {
             init();
             while (true){
                 String msg = scanner.nextLine();
-                if(commandManager.contrast(msg,channel))
-                {
-                    channel.writeAndFlush(msg+" \n");
-                }
+                commandManager.contrast(msg,channel);
             }
 
         } catch (Exception e) {

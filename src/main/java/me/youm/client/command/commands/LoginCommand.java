@@ -3,6 +3,7 @@ package me.youm.client.command.commands;
 import io.netty.channel.Channel;
 import me.youm.client.ChatClient;
 import me.youm.client.command.Command;
+import me.youm.server.protocol.message.LoginRequestMessage;
 
 public class LoginCommand extends Command  {
     public LoginCommand() {
@@ -12,16 +13,7 @@ public class LoginCommand extends Command  {
     @Override
     public String execute(String[] args, Channel channel) {
         if(args.length >= 3 && args[0].equalsIgnoreCase("/login")){
-            channel.writeAndFlush("*//kes");
-            if(
-                    ChatClient.getChatClient().getUser().getUserName().equals(args[1]) &&
-                    ChatClient.getChatClient().getUser().getPassWord().equals(args[2])
-            )
-            {
-                System.out.println("你成功的登录了账号");
-                return "success";
-            }
-            System.out.println("登录账号失败,请检查");
+            channel.writeAndFlush(new LoginRequestMessage(args[1],args[2]));
             return "success";
         }
         return null;

@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <protostuff.version>1.0.10</protostuff.version>
     </properties>
     <dependencies>
         <dependency>
@@ -28,7 +29,11 @@
             <artifactId>mybatis</artifactId>
             <version>3.5.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+            <version>${protostuff.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <resources>
