@@ -2,11 +2,11 @@ package me.youm.client.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import me.youm.server.message.RegisterResponseMessage;
+import me.youm.server.agreement.message.RegisterResponsePacket;
 
-public class RegisterResponseHandler extends SimpleChannelInboundHandler<RegisterResponseMessage> {
+public class RegisterResponseHandler extends SimpleChannelInboundHandler<RegisterResponsePacket> {
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, RegisterResponseMessage registerResponseMessage) throws Exception {
-        System.out.println(registerResponseMessage.getUserName() + " | " + registerResponseMessage.getPassWord() + " | " + registerResponseMessage.getNickName() + " | " + registerResponseMessage.isSuccess() + " | " + registerResponseMessage.getCommand());
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, RegisterResponsePacket packet) throws Exception {
+        System.out.println(packet.getUserName() + " | " + packet.getPassWord() + " | " + packet.getNickName() + " | " + packet.isSuccess() + " | " + packet.getReason());
     }
 }

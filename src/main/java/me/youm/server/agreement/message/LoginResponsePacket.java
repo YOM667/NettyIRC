@@ -1,14 +1,13 @@
-package me.youm.server.message;
+package me.youm.server.agreement.message;
 
-public class LoginResponseMessage extends Packet {
-
+public class LoginResponsePacket extends Packet {
     private boolean success;
     private String reason;
 
-    public LoginResponseMessage() {
+    public LoginResponsePacket() {
     }
 
-    public LoginResponseMessage(boolean success, String reason) {
+    public LoginResponsePacket(boolean success, String reason) {
         this.success = success;
         this.reason = reason;
     }

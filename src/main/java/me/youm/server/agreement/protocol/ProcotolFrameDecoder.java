@@ -1,4 +1,4 @@
-package me.youm.server.protocol;
+package me.youm.server.agreement.protocol;
 
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 

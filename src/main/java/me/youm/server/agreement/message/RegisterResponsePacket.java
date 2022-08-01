@@ -1,19 +1,19 @@
-package me.youm.server.message;
+package me.youm.server.agreement.message;
 
-public class RegisterResponseMessage extends Packet {
+public class RegisterResponsePacket extends Packet {
     private boolean success;
     private String reason;
     private String userName;
     private String passWord;
     private String nickName;
 
-    public RegisterResponseMessage() {
+    public RegisterResponsePacket() {
     }
-    public RegisterResponseMessage(boolean success, String reason) {
+    public RegisterResponsePacket(boolean success, String reason) {
         this.success = success;
         this.reason = reason;
     }
-    public RegisterResponseMessage(boolean success, String reason, String userName, String passWord, String nickName) {
+    public RegisterResponsePacket(boolean success, String reason, String userName, String passWord, String nickName) {
         this.success = success;
         this.reason = reason;
         this.userName = userName;
@@ -29,11 +29,11 @@ public class RegisterResponseMessage extends Packet {
         this.success = success;
     }
 
-    public String getType() {
+    public String getReason() {
         return reason;
     }
 
-    public void setType(String reason) {
+    public void setReason(String reason) {
         this.reason = reason;
     }
 

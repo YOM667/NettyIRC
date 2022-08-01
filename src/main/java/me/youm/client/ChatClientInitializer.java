@@ -7,8 +7,8 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import me.youm.client.handler.LoginResponseHandler;
 import me.youm.client.handler.RegisterResponseHandler;
-import me.youm.server.protocol.IRCMessageCodec;
-import me.youm.server.protocol.ProcotolFrameDecoder;
+import me.youm.server.agreement.protocol.IRCMessageCodec;
+import me.youm.server.agreement.protocol.ProcotolFrameDecoder;
 
 public class ChatClientInitializer extends ChannelInitializer<SocketChannel> {
     private final LoggingHandler LOGGING_HANDLER = new LoggingHandler(LogLevel.DEBUG);

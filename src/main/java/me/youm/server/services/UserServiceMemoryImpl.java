@@ -1,6 +1,9 @@
 package me.youm.server.services;
 
-import java.util.Map;
+import me.youm.client.entity.User;
+import sun.dc.pr.PRError;
+
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -9,6 +12,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class UserServiceMemoryImpl implements UserService {
     private Map<String, String> allUserMap = new ConcurrentHashMap<>();
+    private Map<String, String> userNickMap = new ConcurrentHashMap<>();
+
+    private List<User> users = new ArrayList<>();
+
 
     /**
      * 实现父类的login方法
@@ -31,14 +38,21 @@ public class UserServiceMemoryImpl implements UserService {
 
     /**
      * 注册
-     * @param userName 用户名
-     * @param passWord 密码
-     * @param nickName 昵称
+     * @param user 用户名
      * @return 注册成功返回 true, 否则返回 false
      */
     @Override
-    public boolean register(String userName, String passWord, String nickName) {
-        allUserMap.put(userName,passWord);
+    public boolean register(User user) {
+        users.add(user);
+        userNickMap.put(user.getUserName(),user.getNickName());
+        allUserMap.put(user.getUserName(),user.getPassWord());
+        return true;
+    }
+
+    @Override
+    public boolean updateNickName(User user) {
+        userNickMap.put(userNickMap.get(user.getUserName()),user.getNickName());
+
         return true;
     }
 }

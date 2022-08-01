@@ -4,7 +4,7 @@ import io.netty.channel.Channel;
 import me.youm.client.ChatClient;
 import me.youm.client.command.Command;
 import me.youm.client.entity.User;
-import me.youm.server.message.RegisterRequestMessage;
+import me.youm.server.agreement.message.RegisterRequestPacket;
 
 public class RegisterCommand extends Command {
     public RegisterCommand() {
@@ -17,7 +17,7 @@ public class RegisterCommand extends Command {
             user.setUserName(args[1]);
             user.setPassWord(args[2]);
             user.setNickName(args[3]);
-            channel.writeAndFlush(new RegisterRequestMessage(user.getUserName(),user.getPassWord(),user.getNickName()));
+            channel.writeAndFlush(new RegisterRequestPacket(user));
             return "success";
         }
         return null;

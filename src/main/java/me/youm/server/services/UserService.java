@@ -1,5 +1,7 @@
 package me.youm.server.services;
 
+import me.youm.client.entity.User;
+
 /**
  * 用户管理接口
  */
@@ -15,10 +17,15 @@ public interface UserService {
 
     /**
      * 注册
-     * @param userName 用户名
-     * @param passWord 密码
-     * @param nickName 昵称
+     * @param user 用户
      * @return 注册成功返回 true, 否则返回 false
      */
-    boolean register(String userName,String passWord,String nickName);
+    boolean register(User user);
+
+    /**
+     * 更改nickname
+     * @param user 用户
+     * @return 修改成功返回 true, 否则返回 false
+     */
+    boolean updateNickName(User user);
 }

@@ -1,9 +1,9 @@
-package me.youm.server.protocol;
+package me.youm.server.agreement.protocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageCodec;
-import me.youm.server.message.Packet;
+import me.youm.server.agreement.message.Packet;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

@@ -4,6 +4,7 @@ import io.netty.channel.Channel;
 import me.youm.client.ChatClient;
 import me.youm.client.command.Command;
 import me.youm.client.entity.User;
+import me.youm.server.agreement.message.NickNameRequestPacket;
 
 public class NickCommand extends Command {
     public NickCommand() {
@@ -15,8 +16,8 @@ public class NickCommand extends Command {
         User user = ChatClient.getChatClient().getUser();
         if(args.length >= 2){
             if(args[0].equalsIgnoreCase("/nick")){
-                user.setUserName(args[1]);
-                System.out.println("你的用户名已被更改为: "+user.getUserName());
+                user.setNickName(args[1]);
+                channel.writeAndFlush(new NickNameRequestPacket(user));
                 return "success";
             }
         }
