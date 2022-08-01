@@ -1,14 +1,12 @@
 package me.youm.server.handler;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import me.youm.server.protocol.message.LoginResponseMessage;
-import me.youm.server.protocol.message.RegisterRequestMessage;
-import me.youm.server.protocol.message.RegisterResponseMessage;
+import me.youm.server.message.RegisterRequestMessage;
+import me.youm.server.message.RegisterResponseMessage;
 import me.youm.server.services.UserServiceFactory;
-import me.youm.server.session.Session;
-import me.youm.server.session.SessionFactory;
-
+@ChannelHandler.Sharable
 public class RegisterRequestHandler extends SimpleChannelInboundHandler<RegisterRequestMessage> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, RegisterRequestMessage registerRequestMessage) throws Exception {

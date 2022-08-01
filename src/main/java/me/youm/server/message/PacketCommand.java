@@ -1,4 +1,4 @@
-package me.youm.server.protocol;
+package me.youm.server.message;
 
 public interface PacketCommand {
     Byte LoginRequest = 1;

@@ -1,7 +1,4 @@
-package me.youm.server.protocol.message;
-
-import me.youm.server.protocol.Packet;
-import me.youm.server.protocol.PacketCommand;
+package me.youm.server.message;
 
 public class RegisterResponseMessage extends Packet {
     private boolean success;

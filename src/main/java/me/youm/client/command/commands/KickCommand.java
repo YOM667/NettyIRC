@@ -14,7 +14,6 @@ public class KickCommand extends Command {
     public String execute(String[] args, Channel channel) {
         if(args.length >= 2 && args[0].equalsIgnoreCase("/kick")){
             if(ChatClient.getChatClient().getUser().getStatus().equals(Status.ADMIN)) {
-                channel.writeAndFlush("*//kes <kick|"+args[1] + ">");
             }
             return "success";
         }

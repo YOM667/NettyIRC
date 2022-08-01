@@ -1,9 +1,8 @@
 package me.youm.client.command.commands;
 
 import io.netty.channel.Channel;
-import me.youm.client.ChatClient;
 import me.youm.client.command.Command;
-import me.youm.server.protocol.message.LoginRequestMessage;
+import me.youm.server.message.LoginRequestMessage;
 
 public class LoginCommand extends Command  {
     public LoginCommand() {

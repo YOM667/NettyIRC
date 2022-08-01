@@ -1,13 +1,14 @@
 package me.youm.server.handler;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import me.youm.server.protocol.message.LoginRequestMessage;
-import me.youm.server.protocol.message.LoginResponseMessage;
+import me.youm.server.message.LoginRequestMessage;
+import me.youm.server.message.LoginResponseMessage;
 import me.youm.server.services.UserServiceFactory;
 import me.youm.server.session.Session;
 import me.youm.server.session.SessionFactory;
-
+@ChannelHandler.Sharable
 public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestMessage> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginRequestMessage loginRequestMessage) throws Exception {

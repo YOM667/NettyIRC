@@ -39,7 +39,6 @@ public class ChatClient {
             .channel(NioSocketChannel.class)
             .handler(new ChatClientInitializer());
             Channel channel = bootstrap.connect("127.0.0.1", 1145).sync().channel();
-
             Scanner scanner = new Scanner(System.in);
             init();
             while (true){

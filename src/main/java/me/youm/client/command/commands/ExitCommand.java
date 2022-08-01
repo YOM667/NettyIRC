@@ -11,7 +11,6 @@ public class ExitCommand extends Command {
     @Override
     public String execute(String[] args, Channel channel) {
         if(args[0].equalsIgnoreCase("/exit")) {
-            channel.writeAndFlush("<exit>");
             System.exit(1);
             return "success";
         }

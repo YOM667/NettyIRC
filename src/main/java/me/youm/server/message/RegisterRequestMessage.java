@@ -1,19 +1,17 @@
-package me.youm.server.protocol.message;
+package me.youm.server.message;
 
-import me.youm.server.protocol.Packet;
-import me.youm.server.protocol.PacketCommand;
-
-public class LoginRequestMessage extends Packet {
-
+public class RegisterRequestMessage extends Packet {
     private String userName;
     private String passWord;
+    private String nickName;
 
-    public LoginRequestMessage() {
+    public RegisterRequestMessage() {
     }
 
-    public LoginRequestMessage(String userName, String passWord) {
+    public RegisterRequestMessage(String userName, String passWord, String nickName) {
         this.userName = userName;
         this.passWord = passWord;
+        this.nickName = nickName;
     }
 
     public String getUserName() {
@@ -32,8 +30,16 @@ public class LoginRequestMessage extends Packet {
         this.passWord = passWord;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     @Override
     public Byte getCommand() {
-        return PacketCommand.LoginRequest;
+        return PacketCommand.RegisterRequest;
     }
 }

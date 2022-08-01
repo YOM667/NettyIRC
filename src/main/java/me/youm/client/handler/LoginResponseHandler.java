@@ -2,7 +2,7 @@ package me.youm.client.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import me.youm.server.protocol.message.LoginResponseMessage;
+import me.youm.server.message.LoginResponseMessage;
 
 public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponseMessage> {
     @Override
