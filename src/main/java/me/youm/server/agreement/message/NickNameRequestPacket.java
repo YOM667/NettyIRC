@@ -5,9 +5,6 @@ import me.youm.client.entity.User;
 public class NickNameRequestPacket extends Packet{
     private User user;
 
-    public NickNameRequestPacket() {
-    }
-
     public NickNameRequestPacket(User user) {
         this.user = user;
     }

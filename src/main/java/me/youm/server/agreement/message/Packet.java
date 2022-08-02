@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class Packet implements Serializable {
+    public Packet() {
+    }
+
     private final static Map<Byte, Class<? extends Packet>> packetType = new ConcurrentHashMap<>();
 
     static {

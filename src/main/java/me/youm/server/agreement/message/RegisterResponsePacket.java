@@ -7,8 +7,6 @@ public class RegisterResponsePacket extends Packet {
     private String passWord;
     private String nickName;
 
-    public RegisterResponsePacket() {
-    }
     public RegisterResponsePacket(boolean success, String reason) {
         this.success = success;
         this.reason = reason;

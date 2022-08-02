@@ -1,8 +1,9 @@
 package me.youm.client.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 @SuppressWarnings("all")
-public class User {
+public class User implements Serializable {
     private Integer id;
     private String userName = "";
     private String passWord= "";

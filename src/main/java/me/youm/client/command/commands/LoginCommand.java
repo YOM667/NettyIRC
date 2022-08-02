@@ -14,8 +14,7 @@ public class LoginCommand extends Command  {
     @Override
     public String execute(String[] args, Channel channel) {
         if(args.length >= 3 && args[0].equalsIgnoreCase("/login")){
-            User user = ChatClient.getChatClient().getUser();
-            channel.writeAndFlush(new LoginRequestPacket(user));
+            channel.writeAndFlush(new LoginRequestPacket(args[1],args[2]));
             return "success";
         }
         return null;

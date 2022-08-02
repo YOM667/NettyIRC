@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
+<!DOCTYPE me.youm.mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.youm.server.mapper.UserDao">
+        "http://mybatis.org/dtd/mybatis-3-me.youm.mapper.dtd">
+<me.youm.mapper namespace="me.youm.server.me.youm.mapper.UserDao">
 
     <select id="getUserNameByID" resultType="com.atguigu.mybatis.bean.Employee">
         select * from tbl_employee where id = #{id}
     </select>
-</mapper>
+</me.youm.mapper>

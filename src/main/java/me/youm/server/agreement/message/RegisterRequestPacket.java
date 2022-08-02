@@ -5,8 +5,6 @@ import me.youm.client.entity.User;
 public class RegisterRequestPacket extends Packet {
     private User user;
 
-    public RegisterRequestPacket() {
-    }
 
     public RegisterRequestPacket(User user) {
         this.user = user;

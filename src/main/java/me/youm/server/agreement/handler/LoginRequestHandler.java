@@ -13,12 +13,14 @@ import me.youm.server.session.SessionFactory;
 public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginRequestPacket loginRequestMessage) throws Exception {
-        User user = loginRequestMessage.getUser();
+        String userName = loginRequestMessage.getUserName();
+        String passWord = loginRequestMessage.getPassWord();
+
         LoginResponsePacket responseMessage;
-        boolean login = UserServiceFactory.getUserService().login(user.getUserName(), user.getPassWord());
+        boolean login = UserServiceFactory.getUserService().login(userName, passWord);
         if (login) {
             Session session = SessionFactory.getSession();
-            session.bind(channelHandlerContext.channel(), user.getUserName());
+            session.bind(channelHandlerContext.channel(), userName);
             responseMessage = new LoginResponsePacket(true, "登陆成功");
         } else {
             responseMessage = new LoginResponsePacket(false, "登陆失败 ,用户名或密码不正确");

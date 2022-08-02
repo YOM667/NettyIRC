@@ -4,8 +4,6 @@ public class NickNameResponsePacket extends Packet{
     private String reason;
     private boolean isSuccess;
 
-    public NickNameResponsePacket() {
-    }
 
     public NickNameResponsePacket( boolean isSuccess,String reason) {
         this.reason = reason;
