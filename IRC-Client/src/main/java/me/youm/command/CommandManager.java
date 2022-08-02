@@ -5,7 +5,12 @@ import me.youm.command.commands.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author : You_M
+ * @date : 2022/7/29 17:33 10
+ * @projectName : KES-IRC-Server
+ * @className : CommandManager
+ */
 public class CommandManager {
 
     public static String suffix = "/";

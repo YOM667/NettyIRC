@@ -6,7 +6,12 @@ import me.youm.ChatClient;
 import me.youm.command.Command;
 import me.youm.entity.User;
 import me.youm.message.RegisterRequestPacket;
-
+/**
+ * @author : You_M
+ * @date : 2022/7/29 17:55 41
+ * @projectName : KES-IRC-Server
+ * @className : RegisterCommand
+ */
 public class RegisterCommand extends Command {
     public RegisterCommand() {
         super("register", new String[]{"r"}, "/register [username] [password] [nickname]");

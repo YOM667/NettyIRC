@@ -1,6 +1,12 @@
 package me.youm.command;
 
 import io.netty.channel.Channel;
+/**
+ * @author : You_M
+ * @date : 2022/7/29 17:32 41
+ * @projectName : KES-IRC-Server
+ * @className : Command
+ */
 @SuppressWarnings("all")
 public abstract class Command {
     private String name;

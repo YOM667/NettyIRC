@@ -5,7 +5,12 @@ import io.netty.channel.Channel;
 import me.youm.command.Command;
 import me.youm.message.LoginRequestPacket;
 
-
+/**
+ * @author : You_M
+ * @date : 2022/7/29 17:54 54
+ * @projectName : KES-IRC-Server
+ * @className : LoginCommand
+ */
 public class LoginCommand extends Command {
     public LoginCommand() {
         super("login", new String[]{"l"}, "/login [username] [password]");

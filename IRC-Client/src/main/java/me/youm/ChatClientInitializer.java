@@ -12,7 +12,12 @@ import me.youm.handler.RegisterResponseHandler;
 import me.youm.protocol.IRCMessageCodec;
 import me.youm.protocol.ProcotolFrameDecoder;
 
-
+/**
+ * @author : You_M
+ * @date : 2022/7/29 15:01 42
+ * @projectName : KES-IRC-Server
+ * @className : ChatClientInitializer
+ */
 public class ChatClientInitializer extends ChannelInitializer<SocketChannel> {
     private final LoggingHandler LOGGING_HANDLER = new LoggingHandler(LogLevel.DEBUG);
     private final RegisterResponseHandler REGISTER_HANDLER = new RegisterResponseHandler();

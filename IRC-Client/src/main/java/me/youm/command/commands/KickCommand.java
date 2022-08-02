@@ -5,7 +5,12 @@ import me.youm.ChatClient;
 import me.youm.command.Command;
 import me.youm.entity.Status;
 
-
+/**
+ * @author : You_M
+ * @date : 2022/7/29 17:57 10
+ * @projectName : KES-IRC-Server
+ * @className : KickCommand
+ */
 public class KickCommand extends Command {
     public KickCommand() {
         super("kick", new String[]{"k"},"/kick [username]");

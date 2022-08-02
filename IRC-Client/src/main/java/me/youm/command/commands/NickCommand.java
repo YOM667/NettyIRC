@@ -5,7 +5,12 @@ import me.youm.ChatClient;
 import me.youm.command.Command;
 import me.youm.entity.User;
 import me.youm.message.NickNameRequestPacket;
-
+/**
+ * @author : You_M
+ * @date : 2022/7/29 17:58 10
+ * @projectName : KES-IRC-Server
+ * @className : NickCommand
+ */
 public class NickCommand extends Command {
     public NickCommand() {
         super("nick", new String[]{"n"});
