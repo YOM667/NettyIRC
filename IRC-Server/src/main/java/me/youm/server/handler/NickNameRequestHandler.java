@@ -1,4 +1,4 @@
-package me.youm.agreement.handler;
+package me.youm.server.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

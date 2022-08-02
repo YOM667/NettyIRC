@@ -1,4 +1,4 @@
-# KES-IRC-me.youm.Server
+# KES-IRC-me.youm.server.init.Server
 
 ### 介绍
 

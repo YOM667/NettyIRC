@@ -11,7 +11,7 @@ public class MyBatisUtil {
     private static SqlSessionFactory sessionFactory;
     static {
         try {
-            String resource = "mapper/UserMapper.xml";
+            String resource = "me.youm/mapper/UserMapper.xml";
             InputStream inputStream = Resources.getResourceAsStream(resource);
             sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         }catch (Exception e){

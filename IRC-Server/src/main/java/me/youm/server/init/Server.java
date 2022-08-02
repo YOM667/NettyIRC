@@ -1,4 +1,4 @@
-package me.youm;
+package me.youm.server.init;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;

@@ -1,4 +1,4 @@
-package me.youm;
+package me.youm.server.init;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
@@ -6,9 +6,9 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import me.youm.agreement.handler.LoginRequestHandler;
-import me.youm.agreement.handler.NickNameRequestHandler;
-import me.youm.agreement.handler.RegisterRequestHandler;
+import me.youm.server.handler.LoginRequestHandler;
+import me.youm.server.handler.NickNameRequestHandler;
+import me.youm.server.handler.RegisterRequestHandler;
 import me.youm.protocol.IRCMessageCodec;
 import me.youm.protocol.ProcotolFrameDecoder;
 

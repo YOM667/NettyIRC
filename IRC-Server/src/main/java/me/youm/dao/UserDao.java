@@ -1,5 +1,4 @@
-package me.youm.mapper;
+package me.youm.dao;
 
 public interface UserDao {
-
 }
