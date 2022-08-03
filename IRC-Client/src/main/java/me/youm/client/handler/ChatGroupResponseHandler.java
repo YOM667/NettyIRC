@@ -3,7 +3,6 @@ package me.youm.client.handler;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import me.youm.message.ChatGroupRequestPacket;
 import me.youm.message.ChatGroupResponsePacket;
 
 /**
@@ -14,6 +13,12 @@ import me.youm.message.ChatGroupResponsePacket;
  */
 @ChannelHandler.Sharable
 public class ChatGroupResponseHandler extends SimpleChannelInboundHandler<ChatGroupResponsePacket> {
+    /**
+     * 读取ChatGroupResponsePacket数据包的方法
+     * @param channelHandlerContext ChannelHandlerContext对象
+     * @param chatGroupResponsePacket  ChatGroupResponsePacket数据包
+     * @throws Exception 异常
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ChatGroupResponsePacket chatGroupResponsePacket) throws Exception {
         System.out.println(chatGroupResponsePacket.getMessage());

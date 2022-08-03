@@ -15,12 +15,24 @@ import me.youm.message.LoginResponsePacket;
  */
 @ChannelHandler.Sharable
 public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponsePacket> {
-    private User u = ChatClient.getChatClient().user;
+    private User u = ChatClient.getChatClient().getUser();
+    /**
+     * 读取LoginResponsePacket数据包的方法
+     * @param channelHandlerContext ChannelHandlerContext对象
+     * @param loginResponseMessage  LoginResponsePacket数据包
+     * @throws Exception 异常
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginResponsePacket loginResponseMessage)  {
         System.out.println(loginResponseMessage.isSuccess() +" | " + loginResponseMessage.getReason());
         writeUser(loginResponseMessage.getUser());
     }
+
+    /**
+     * 将LoginResponsePacket中的User对象写入到客户端的User中
+     * 使客户端可以判断 用户是否登录
+     * @param user User对象
+     */
     public void writeUser(User user){
         u.setUserName(user.getUserName());
         u.setPassWord(user.getPassWord());

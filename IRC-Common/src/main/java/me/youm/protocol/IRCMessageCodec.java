@@ -12,6 +12,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
+/**
+ * 自定义的编解码器,借鉴了黑马netty
+ * 传输的Packet中的值必须要实现Serializable接口
+ */
 public class IRCMessageCodec extends MessageToMessageCodec<ByteBuf, Packet> {
     @Override
     protected void encode(ChannelHandlerContext ctx, Packet msg, List<Object> outList) throws Exception {

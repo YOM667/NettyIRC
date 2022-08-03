@@ -12,6 +12,12 @@ import me.youm.message.RegisterResponsePacket;
  */
 @ChannelHandler.Sharable
 public class RegisterResponseHandler extends SimpleChannelInboundHandler<RegisterResponsePacket> {
+    /**
+     * 读取RegisterResponsePacket数据包的方法
+     * @param channelHandlerContext ChannelHandlerContext对象
+     * @param packet  RegisterResponsePacket数据包
+     * @throws Exception 异常
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, RegisterResponsePacket packet) throws Exception {
         System.out.println(packet.getUserName() + " | " + packet.getPassWord() + " | " + packet.getNickName() + " | " + packet.isSuccess() + " | " + packet.getReason());

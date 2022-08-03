@@ -23,16 +23,39 @@ import java.util.Scanner;
  */
 @SuppressWarnings("all")
 public class ChatClient {
+    /**
+     * 单例设计模式
+     */
     public static ChatClient chatClient = new ChatClient();
+
+    /**
+     * TODO 获取实例
+     * @return ChatClient对象
+     */
     public static ChatClient getChatClient(){
         return chatClient;
     }
-    public User user = new User();
-
+    //公共的可访问的对象--------------------------------------
+    /**
+     * 只有本类才能直接访问的private的User对象,可以通过ChatClient.getChatClient().getUser() 获取
+     */
+    private User user = new User();
+    /**
+     * 只有本类才能直接访问的private的CommandManager对象,可以通过ChatClient.getChatClient().getCommandManager 获取
+     */
     public CommandManager commandManager = new CommandManager();
+    //公共的可访问的对象--------------------------------------
+
+    /**
+     * TODO 初始化方法 用来初始化commandManager等方法
+     */
     public void init(){
         commandManager.init();
     }
+
+    /**
+     * TODO start方法由主类调用,用来启动bootstrap客户端
+     */
     public void start() {
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
@@ -41,8 +64,9 @@ public class ChatClient {
             .channel(NioSocketChannel.class)
             .handler(new ChatClientInitializer());
             Channel channel = bootstrap.connect("127.0.0.1", 1145).sync().channel();
+            /*调用各种方法,以后会加入多线程*/
+            // ------------------------------------------------------
             init();
-            //------------------------------------------------------
             run(channel);
             //------------------------------------------------------
         } catch (Exception e) {
@@ -52,13 +76,25 @@ public class ChatClient {
         }
     }
 
+    /**
+     * TODO 获取User的方法
+     * @return User对象
+     */
     public User getUser() {
         return user;
     }
-
+    /**
+     * TODO 获取CommandManager的方法
+     * @return CommandManager对象
+     */
     public CommandManager getCommandManager() {
         return commandManager;
     }
+
+    /**
+     * TODO run方法由start方法调用,用来进行控制台输入输出
+     * @param channel Channel对象 用来发送数据
+     */
     public void run(Channel channel){
         Scanner scanner = new Scanner(System.in);
         while (true){

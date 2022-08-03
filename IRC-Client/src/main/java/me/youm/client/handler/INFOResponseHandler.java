@@ -13,6 +13,12 @@ import me.youm.message.INFOResponsePacket;
  */
 @ChannelHandler.Sharable
 public class INFOResponseHandler extends SimpleChannelInboundHandler<INFOResponsePacket> {
+    /**
+     * 读取INFOResponsePacket数据包的方法
+     * @param channelHandlerContext ChannelHandlerContext对象
+     * @param infoResponsePacket  INFOResponsePacket数据包
+     * @throws Exception 异常
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, INFOResponsePacket infoResponsePacket) throws Exception {
         System.out.println(infoResponsePacket.getUser().toString() + " | " + infoResponsePacket.getReason() + " | " + infoResponsePacket.isSuccess());

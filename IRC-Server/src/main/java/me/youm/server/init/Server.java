@@ -25,7 +25,13 @@ public class Server {
         this.port = port;
     }
 
+    /**
+     * TODO 启动bootstrap服务端
+     */
     public void start(){
+        /**
+         * 创建两个EventLoopGroup 分别是 worker和boss
+         */
         EventLoopGroup worker = new NioEventLoopGroup();
         EventLoopGroup boss = new NioEventLoopGroup();
         try {
@@ -34,7 +40,7 @@ public class Server {
             .group(boss, worker)
             .childHandler(new ChatServerInitializer())
             .channel(NioServerSocketChannel.class)
-            .option(ChannelOption.SO_BACKLOG,200)
+            .option(ChannelOption.SO_BACKLOG,1024)
             .option(ChannelOption.SO_KEEPALIVE,true);
             Channel channel = serverBootstrap.bind("127.0.0.1",1145).sync().channel();
             channel.closeFuture().sync();

@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @className : Message
  */
 public class Message implements Serializable {
-    private String message;
+    private String message ="";
     private User user;
 
     public Message() {

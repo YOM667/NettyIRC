@@ -12,6 +12,12 @@ import me.youm.message.NickNameResponsePacket;
  */
 @ChannelHandler.Sharable
 public class NickNameResponseHandler extends SimpleChannelInboundHandler<NickNameResponsePacket> {
+    /**
+     * 读取NickNameResponsePacket数据包的方法
+     * @param channelHandlerContext ChannelHandlerContext对象
+     * @param nickNameResponsePacket  NickNameResponsePacket数据包
+     * @throws Exception 异常
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, NickNameResponsePacket nickNameResponsePacket) throws Exception {
         System.out.println(nickNameResponsePacket.isSuccess() +" | " + nickNameResponsePacket.getReason() );

@@ -1,5 +1,8 @@
 package me.youm.message;
 
+/**
+ * 存储Packet类型的类
+ */
 public interface PacketCommand {
     Byte LoginRequest = 1;
     Byte LoginResponse = 2;
