@@ -53,7 +53,23 @@ public class UserServiceMemoryImpl implements UserService {
     @Override
     public boolean updateNickName(User user) {
         userNickMap.put(userNickMap.get(user.getUserName()),user.getNickName());
+        for (User u : users){
+            if (u.getUserName().equals(user.getUserName())) {
+                u.setNickName(user.getNickName());
+                users.set(users.indexOf(u),u);
+            }
+        }
 
         return true;
+    }
+
+    @Override
+    public User getUserInfo(String username) {
+        for (User user : users) {
+            if (user.getUserName().equals(username)) {
+                return user;
+            }
+        }
+        return null;
     }
 }

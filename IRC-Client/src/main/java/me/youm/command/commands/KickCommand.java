@@ -1,7 +1,7 @@
 package me.youm.command.commands;
 
 import io.netty.channel.Channel;
-import me.youm.ChatClient;
+import me.youm.client.init.ChatClient;
 import me.youm.command.Command;
 import me.youm.entity.Status;
 

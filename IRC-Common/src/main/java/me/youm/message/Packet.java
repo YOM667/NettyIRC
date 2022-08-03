@@ -17,6 +17,9 @@ public abstract class Packet implements Serializable {
         packetType.put(PacketCommand.RegisterResponse, RegisterResponsePacket.class);
         packetType.put(PacketCommand.NickNameRequest , NickNameRequestPacket.class);
         packetType.put(PacketCommand.NickNameResponse, NickNameResponsePacket.class);
+        packetType.put(PacketCommand.INFOResponse, INFOResponsePacket.class);
+        packetType.put(PacketCommand.INFORequest, INFORequestPacket.class);
+
     }
 
 

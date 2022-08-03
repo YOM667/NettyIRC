@@ -22,6 +22,7 @@ public class CommandManager {
         this.commands.add(new KickCommand());
         this.commands.add(new LoginCommand());
         this.commands.add(new RegisterCommand());
+        this.commands.add(new INFOCommand());
     }
     public boolean contrast(String message, Channel channel){
         String[] args = message.split(" ");

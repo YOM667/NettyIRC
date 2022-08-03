@@ -7,4 +7,6 @@ public interface PacketCommand {
     Byte RegisterResponse = 4;
     Byte NickNameRequest = 5;
     Byte NickNameResponse = 6;
+    Byte INFOResponse = 7;
+    Byte INFORequest = 8;
 }

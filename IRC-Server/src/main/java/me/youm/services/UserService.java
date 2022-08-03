@@ -29,4 +29,10 @@ public interface UserService {
      * @return 修改成功返回 true, 否则返回 false
      */
     boolean updateNickName(User user);
+
+    /**
+     * 获取用户信息
+     * @return 返回用户对象
+     */
+    User getUserInfo(String username);
 }

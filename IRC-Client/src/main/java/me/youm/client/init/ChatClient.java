@@ -1,4 +1,4 @@
-package me.youm;
+package me.youm.client.init;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -17,7 +17,6 @@ import java.util.Scanner;
  * <li> start 启动客户端
  * <li> init 初始化所有模块
  * @version 0.1.5
- * @author You_M
  */
 @SuppressWarnings("all")
 public class ChatClient {

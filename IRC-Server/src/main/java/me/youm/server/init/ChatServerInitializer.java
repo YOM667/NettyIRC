@@ -6,6 +6,8 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import me.youm.message.Packet;
+import me.youm.server.handler.INFORequestHandler;
 import me.youm.server.handler.LoginRequestHandler;
 import me.youm.server.handler.NickNameRequestHandler;
 import me.youm.server.handler.RegisterRequestHandler;
@@ -18,6 +20,7 @@ public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
     private final LoginRequestHandler LOGIN_HANDLER = new LoginRequestHandler();
     private final RegisterRequestHandler REGISTER_HANDLER = new RegisterRequestHandler();
     private final NickNameRequestHandler NICK_NAME_HANDLER = new NickNameRequestHandler();
+    private final INFORequestHandler INFO_HANDLER = new INFORequestHandler();
     @Override
     protected void initChannel(SocketChannel socketChannel)  {
         System.out.println("有客户端进入: "+socketChannel.remoteAddress());
@@ -29,5 +32,6 @@ public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(LOGIN_HANDLER);
         pipeline.addLast(REGISTER_HANDLER);
         pipeline.addLast(NICK_NAME_HANDLER);
+        pipeline.addLast(INFO_HANDLER);
     }
 }

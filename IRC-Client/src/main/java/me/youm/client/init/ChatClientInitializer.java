@@ -1,4 +1,4 @@
-package me.youm;
+package me.youm.client.init;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -6,9 +6,10 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
-import me.youm.handler.LoginResponseHandler;
-import me.youm.handler.NickNameResponseHandler;
-import me.youm.handler.RegisterResponseHandler;
+import me.youm.client.handler.INFOResponseHandler;
+import me.youm.client.handler.LoginResponseHandler;
+import me.youm.client.handler.NickNameResponseHandler;
+import me.youm.client.handler.RegisterResponseHandler;
 import me.youm.protocol.IRCMessageCodec;
 import me.youm.protocol.ProcotolFrameDecoder;
 
@@ -23,6 +24,7 @@ public class ChatClientInitializer extends ChannelInitializer<SocketChannel> {
     private final RegisterResponseHandler REGISTER_HANDLER = new RegisterResponseHandler();
     private final LoginResponseHandler LOGIN_HANDLER = new LoginResponseHandler();
     private final NickNameResponseHandler NICK_NAME_HANDLER = new NickNameResponseHandler();
+    private final INFOResponseHandler INFO_HANDLER = new INFOResponseHandler();
     @Override
     protected void initChannel(SocketChannel socketChannel) {
         ChannelPipeline pipeline = socketChannel.pipeline();
@@ -32,5 +34,6 @@ public class ChatClientInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(REGISTER_HANDLER);
         pipeline.addLast(LOGIN_HANDLER);
         pipeline.addLast(NICK_NAME_HANDLER);
+        pipeline.addLast(INFO_HANDLER);
     }
 }
