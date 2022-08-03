@@ -1,6 +1,7 @@
 package me.youm.command;
 
 import io.netty.channel.Channel;
+import me.youm.client.init.ChatClient;
 import me.youm.command.commands.*;
 
 import java.util.ArrayList;
@@ -28,15 +29,28 @@ public class CommandManager {
         String[] args = message.split(" ");
         //----------
         for (Command command : commands) {
-            if(args[0].startsWith(suffix)){
-                if(args[0].equalsIgnoreCase(suffix + command.getName())){
+            if(args[0].startsWith(suffix) && args[0].equalsIgnoreCase(suffix + command.getName()) ){
+                if(command.getName().equals("login") || command.getName().equals("register")){
                     if(!(command.execute(args,channel) == null)){
                         return Type.COMMAND;
                     }else {
                         System.out.println("格式出错");
                         return Type.ERROR;
                     }
+                }else {
+                    if(ChatClient.getChatClient().user.isLogin()){
+                        if(!(command.execute(args,channel) == null)){
+                            return Type.COMMAND;
+                        }else {
+                            System.out.println("格式出错");
+                            return Type.ERROR;
+                        }
+                    }else {
+                        System.out.println("请登录");
+                        return Type.ERROR;
+                    }
                 }
+
             }
         }
         if(args[0].startsWith(suffix)){
