@@ -1,6 +1,9 @@
 package me.youm.command;
 
 import io.netty.channel.Channel;
+import me.youm.client.init.ChatClient;
+import me.youm.entity.User;
+
 /**
  * @author : You_M
  * @date : 2022/7/29 17:32 41
@@ -13,6 +16,7 @@ public abstract class Command {
     private String[] alias;
 
     private String des;
+    protected User user = ChatClient.getChatClient().getUser();
 
     public String[] getAlias() {
         return alias;

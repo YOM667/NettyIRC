@@ -41,26 +41,10 @@ public class ChatClient {
             .channel(NioSocketChannel.class)
             .handler(new ChatClientInitializer());
             Channel channel = bootstrap.connect("127.0.0.1", 1145).sync().channel();
-            Scanner scanner = new Scanner(System.in);
             init();
-            while (true){
-                String msg = scanner.nextLine();
-                switch (commandManager.contrast(msg,channel)){
-                    case CHAT:
-                        channel.writeAndFlush(new ChatGroupRequestPacket(new Message(msg,user)));
-                        break;
-                    case COMMAND:
-                        System.out.println("发送了指令");
-                        break;
-                    case ERROR:
-                        System.out.println("报错");
-                        break;
-                    default:{
-
-                    }
-                }
-            }
-
+            //------------------------------------------------------
+            run(channel);
+            //------------------------------------------------------
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -74,5 +58,27 @@ public class ChatClient {
 
     public CommandManager getCommandManager() {
         return commandManager;
+    }
+    public void run(Channel channel){
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            String msg = scanner.nextLine();
+            switch (commandManager.contrast(msg,channel)){
+                case CHAT:
+                    if(this.user.isLogin()){
+                        channel.writeAndFlush(new ChatGroupRequestPacket(new Message(msg,user)));
+                    }
+                    break;
+                case COMMAND:
+                    System.out.println("发送了指令");
+                    break;
+                case ERROR:
+                    System.out.println("报错");
+                    break;
+                default:{
+                }
+            }
+
+        }
     }
 }

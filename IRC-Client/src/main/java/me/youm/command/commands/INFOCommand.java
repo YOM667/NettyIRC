@@ -17,9 +17,11 @@ public class INFOCommand extends Command {
 
     @Override
     public String execute(String[] args, Channel channel) {
-        if(args[0].equalsIgnoreCase("/info")) {
-            channel.writeAndFlush(new INFORequestPacket(true));
-            return "success";
+        if(user.isLogin()){
+            if(args[0].equalsIgnoreCase("/info")) {
+                channel.writeAndFlush(new INFORequestPacket(true));
+                return "success";
+            }
         }
         return null;
     }

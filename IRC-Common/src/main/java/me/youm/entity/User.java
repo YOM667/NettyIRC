@@ -79,4 +79,10 @@ public class User implements Serializable {
     public void setStatus(Status status) {
         this.status = status;
     }
+    public boolean isLogin(){
+        if(this.userName.equals("") || this.nickName.equals("") || this.passWord.equals("")) {
+            return false;
+        }
+        return true;
+    }
 }

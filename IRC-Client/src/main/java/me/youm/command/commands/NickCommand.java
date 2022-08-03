@@ -18,13 +18,15 @@ public class NickCommand extends Command {
 
     @Override
     public String execute(String[] args, Channel channel) {
-        User user = ChatClient.getChatClient().getUser();
-        if(args.length >= 2){
-            if(args[0].equalsIgnoreCase("/nick")){
-                user.setNickName(args[1]);
-                channel.writeAndFlush(new NickNameRequestPacket(user));
-                return "success";
+        if (user.isLogin()) {
+            if (args.length >= 2) {
+                if (args[0].equalsIgnoreCase("/nick")) {
+                    user.setNickName(args[1]);
+                    channel.writeAndFlush(new NickNameRequestPacket(user));
+                    return "success";
+                }
             }
+
         }
         return null;
     }
