@@ -6,11 +6,9 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import me.youm.message.ChatGroupRequestPacket;
 import me.youm.message.Packet;
-import me.youm.server.handler.INFORequestHandler;
-import me.youm.server.handler.LoginRequestHandler;
-import me.youm.server.handler.NickNameRequestHandler;
-import me.youm.server.handler.RegisterRequestHandler;
+import me.youm.server.handler.*;
 import me.youm.protocol.IRCMessageCodec;
 import me.youm.protocol.ProcotolFrameDecoder;
 
@@ -21,6 +19,7 @@ public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
     private final RegisterRequestHandler REGISTER_HANDLER = new RegisterRequestHandler();
     private final NickNameRequestHandler NICK_NAME_HANDLER = new NickNameRequestHandler();
     private final INFORequestHandler INFO_HANDLER = new INFORequestHandler();
+    private final ChatGroupRequestHandler CHAT_GROUP_HANDLER = new ChatGroupRequestHandler();
     @Override
     protected void initChannel(SocketChannel socketChannel)  {
         System.out.println("有客户端进入: "+socketChannel.remoteAddress());
@@ -33,5 +32,6 @@ public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(REGISTER_HANDLER);
         pipeline.addLast(NICK_NAME_HANDLER);
         pipeline.addLast(INFO_HANDLER);
+        pipeline.addLast(CHAT_GROUP_HANDLER);
     }
 }

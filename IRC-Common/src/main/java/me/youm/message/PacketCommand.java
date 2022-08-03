@@ -9,4 +9,6 @@ public interface PacketCommand {
     Byte NickNameResponse = 6;
     Byte INFOResponse = 7;
     Byte INFORequest = 8;
+    Byte ChatGroupRequest = 9;
+    Byte ChatGroupResponse = 10;
 }

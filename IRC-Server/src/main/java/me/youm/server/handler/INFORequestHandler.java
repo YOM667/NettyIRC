@@ -1,5 +1,6 @@
 package me.youm.server.handler;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import me.youm.entity.User;
@@ -17,6 +18,7 @@ import me.youm.utils.SendPacket;
  * @projectName : KES-IRC-Server
  * @className : INFORequestPacket
  */
+@ChannelHandler.Sharable
 public class INFORequestHandler extends SimpleChannelInboundHandler<INFORequestPacket> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, INFORequestPacket infoRequestPacket) throws Exception {

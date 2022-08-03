@@ -1,7 +1,9 @@
 package me.youm.client.handler;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import me.youm.client.init.ChatClient;
 import me.youm.message.LoginResponsePacket;
 
 /**
@@ -10,6 +12,7 @@ import me.youm.message.LoginResponsePacket;
  * @projectName : KES-IRC-Server
  * @className : LoginResponseHandler
  */
+@ChannelHandler.Sharable
 public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponsePacket> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginResponsePacket loginResponseMessage)  {

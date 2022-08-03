@@ -12,9 +12,7 @@ public class ClientMain {
     public static String[] dev = {"You_M"};
     public static void main(String[] args) {
         ChatClient.getChatClient().start();
-        for (String s : dev) {
-            System.out.println(s);
-        }
+
     }
 
 }

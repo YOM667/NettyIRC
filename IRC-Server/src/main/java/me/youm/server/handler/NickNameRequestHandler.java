@@ -1,5 +1,6 @@
 package me.youm.server.handler;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -8,7 +9,7 @@ import me.youm.message.NickNameResponsePacket;
 import me.youm.services.UserService;
 import me.youm.services.UserServiceFactory;
 import me.youm.utils.SendPacket;
-
+@ChannelHandler.Sharable
 public class NickNameRequestHandler extends SimpleChannelInboundHandler<NickNameRequestPacket> {
 
     @Override

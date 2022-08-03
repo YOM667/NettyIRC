@@ -24,23 +24,25 @@ public class CommandManager {
         this.commands.add(new RegisterCommand());
         this.commands.add(new INFOCommand());
     }
-    public boolean contrast(String message, Channel channel){
+    public Type contrast(String message, Channel channel){
         String[] args = message.split(" ");
+        //----------
         for (Command command : commands) {
             if(args[0].startsWith(suffix)){
                 if(args[0].equalsIgnoreCase(suffix + command.getName())){
                     if(!(command.execute(args,channel) == null)){
-                        return true;
+                        return Type.COMMAND;
                     }else {
                         System.out.println("格式出错");
+                        return Type.ERROR;
                     }
                 }
             }
         }
         if(args[0].startsWith(suffix)){
             System.out.println("没有这个指令");
-            return false;
+            return Type.ERROR;
         }
-        return true;
+        return Type.CHAT;
     }
 }

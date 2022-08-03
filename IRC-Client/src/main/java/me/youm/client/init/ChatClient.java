@@ -5,7 +5,10 @@ import io.netty.channel.Channel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import me.youm.command.CommandManager;
+import me.youm.entity.Message;
 import me.youm.entity.User;
+import me.youm.message.ChatGroupRequestPacket;
+import me.youm.message.ChatGroupResponsePacket;
 
 import java.util.Scanner;
 
@@ -42,7 +45,20 @@ public class ChatClient {
             init();
             while (true){
                 String msg = scanner.nextLine();
-                commandManager.contrast(msg,channel);
+                switch (commandManager.contrast(msg,channel)){
+                    case CHAT:
+                        channel.writeAndFlush(new ChatGroupRequestPacket(new Message(msg,user)));
+                        break;
+                    case COMMAND:
+                        System.out.println("发送了指令");
+                        break;
+                    case ERROR:
+                        System.out.println("报错");
+                        break;
+                    default:{
+
+                    }
+                }
             }
 
         } catch (Exception e) {

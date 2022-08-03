@@ -19,11 +19,7 @@ public class RegisterCommand extends Command {
     @Override
     public String execute(String[] args, Channel channel) {
         if(args.length >= 4 && args[0].equalsIgnoreCase("/register")){
-            User user = ChatClient.getChatClient().getUser();
-            user.setUserName(args[1]);
-            user.setPassWord(args[2]);
-            user.setNickName(args[3]);
-            channel.writeAndFlush(new RegisterRequestPacket(user));
+            channel.writeAndFlush(new RegisterRequestPacket(new User(args[1],args[2],args[3])));
             return "success";
         }
         return null;
