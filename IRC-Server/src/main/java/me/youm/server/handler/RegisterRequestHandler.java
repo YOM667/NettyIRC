@@ -7,6 +7,7 @@ import me.youm.entity.User;
 import me.youm.message.RegisterRequestPacket;
 import me.youm.message.RegisterResponsePacket;
 import me.youm.services.UserServiceFactory;
+import me.youm.utils.SendPacket;
 
 @ChannelHandler.Sharable
 public class RegisterRequestHandler extends SimpleChannelInboundHandler<RegisterRequestPacket> {
@@ -21,6 +22,6 @@ public class RegisterRequestHandler extends SimpleChannelInboundHandler<Register
         } else {
             responseMessage = new RegisterResponsePacket(false, "注册失败 ,请按照规则填写");
         }
-        channelHandlerContext.writeAndFlush(responseMessage);
+        SendPacket.sendPacketToServer(channelHandlerContext,responseMessage);
     }
 }

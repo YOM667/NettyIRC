@@ -8,6 +8,7 @@ import me.youm.message.LoginResponsePacket;
 import me.youm.services.UserServiceFactory;
 import me.youm.session.Session;
 import me.youm.session.SessionFactory;
+import me.youm.utils.SendPacket;
 
 @ChannelHandler.Sharable
 public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket> {
@@ -25,6 +26,6 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
         } else {
             responseMessage = new LoginResponsePacket(false, "登陆失败 ,用户名或密码不正确");
         }
-        channelHandlerContext.writeAndFlush(responseMessage);
+        SendPacket.sendPacketToServer(channelHandlerContext,responseMessage);
     }
 }

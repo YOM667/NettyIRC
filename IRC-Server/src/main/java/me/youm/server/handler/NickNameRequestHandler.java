@@ -7,6 +7,7 @@ import me.youm.message.NickNameRequestPacket;
 import me.youm.message.NickNameResponsePacket;
 import me.youm.services.UserService;
 import me.youm.services.UserServiceFactory;
+import me.youm.utils.SendPacket;
 
 public class NickNameRequestHandler extends SimpleChannelInboundHandler<NickNameRequestPacket> {
 
@@ -20,6 +21,6 @@ public class NickNameRequestHandler extends SimpleChannelInboundHandler<NickName
         } else {
             responsePacket = new NickNameResponsePacket(false, "更改失败 ,请按照规则填写");
         }
-        channelHandlerContext.writeAndFlush(responsePacket);
+        SendPacket.sendPacketToServer(channelHandlerContext,responsePacket);
     }
 }

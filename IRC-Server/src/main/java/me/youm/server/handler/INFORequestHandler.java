@@ -9,6 +9,7 @@ import me.youm.services.UserService;
 import me.youm.services.UserServiceFactory;
 import me.youm.session.Session;
 import me.youm.session.SessionFactory;
+import me.youm.utils.SendPacket;
 
 /**
  * @author : You_M
@@ -26,10 +27,9 @@ public class INFORequestHandler extends SimpleChannelInboundHandler<INFORequestP
         INFOResponsePacket infoResponsePacket;
         if (infoRequestPacket.isWant()) {
             infoResponsePacket = new INFOResponsePacket(userInfo,"获取成功",true);
-            channelHandlerContext.writeAndFlush(infoResponsePacket);
         }else {
             infoResponsePacket = new INFOResponsePacket(userInfo,"获取失败",false);
-            channelHandlerContext.writeAndFlush(infoResponsePacket);
         }
+        SendPacket.sendPacketToServer(channelHandlerContext,infoResponsePacket);
     }
 }
