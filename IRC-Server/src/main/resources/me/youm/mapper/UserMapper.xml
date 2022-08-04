@@ -6,4 +6,19 @@
     <select id="selectUserByName" parameterType="java.lang.String" resultType="me.youm.entity.User">
         select * from talkroom.user where userName = #{name}
     </select>
+    <insert id="registerUser" parameterType="me.youm.entity.User">
+        insert into talkroom.user (id, userName, passWord, nickName, Status) values (#{id},#{userName},#{passWord},#{nickName},#{status});
+    </insert>
+    <update id="updateNickName" parameterType="me.youm.entity.User">
+        update talkroom.user set nickName=#{nickName}  where userName=#{userName};
+    </update>
+    <update id="updateAfterDelete" parameterType="java.lang.Integer">
+        alter table talkroom.user AUTO_INCREMENT=1
+    </update>
+    <update id="updateAfter" parameterType="java.lang.Integer">
+        update talkroom.user set id = id-1 where id>1 and id > #{id,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteUser" parameterType="me.youm.entity.User">
+        delete from talkroom.user where userName=#{userName}
+    </delete>
 </mapper>

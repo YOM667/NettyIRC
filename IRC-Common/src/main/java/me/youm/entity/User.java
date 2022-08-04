@@ -4,6 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 @SuppressWarnings("all")
 public class User implements Serializable {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     private Integer id;
     private String userName = "";
     private String passWord= "";
