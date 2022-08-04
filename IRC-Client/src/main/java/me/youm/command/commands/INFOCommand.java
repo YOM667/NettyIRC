@@ -12,7 +12,7 @@ import me.youm.message.INFORequestPacket;
  */
 public class INFOCommand extends Command {
     public INFOCommand() {
-        super("info", new String[]{"i"});
+        super("info", new String[]{"i"},"/info");
     }
 
     @Override

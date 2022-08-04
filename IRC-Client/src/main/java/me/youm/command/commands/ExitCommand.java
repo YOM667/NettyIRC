@@ -11,7 +11,7 @@ import me.youm.command.Command;
 
 public class ExitCommand extends Command {
     public ExitCommand() {
-        super("exit",new String[]{"e"});
+        super("exit",new String[]{"e"},"/exit");
     }
 
     @Override

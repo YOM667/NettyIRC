@@ -42,6 +42,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../Program/apache-maven-3.8.6/repo/io/netty/netty-transport-native-unix-common/4.1.77.Final/netty-transport-native-unix-common-4.1.77.Final.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../Program/apache-maven-3.8.6/repo/io/netty/netty-resolver-dns-native-macos/4.1.77.Final/netty-resolver-dns-native-macos-4.1.77.Final-osx-x86_64.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../Program/apache-maven-3.8.6/repo/io/netty/netty-codec-stomp/4.1.77.Final/netty-codec-stomp-4.1.77.Final.jar" path-in-jar="/" />
+      <element id="module-output" name="KES-IRC-Server" />
     </root>
   </artifact>
 </component>

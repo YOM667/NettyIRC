@@ -1,9 +1,7 @@
 package me.youm.command.commands;
 
 import io.netty.channel.Channel;
-import me.youm.client.init.ChatClient;
 import me.youm.command.Command;
-import me.youm.entity.User;
 import me.youm.message.NickNameRequestPacket;
 /**
  * @author : You_M
@@ -13,7 +11,7 @@ import me.youm.message.NickNameRequestPacket;
  */
 public class NickCommand extends Command {
     public NickCommand() {
-        super("nick", new String[]{"n"});
+        super("nick", new String[]{"n"},"/nick [nickname]");
     }
 
     @Override

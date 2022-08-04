@@ -32,6 +32,7 @@ public class CommandManager {
         this.commands.add(new LoginCommand());
         this.commands.add(new RegisterCommand());
         this.commands.add(new INFOCommand());
+        this.commands.add(new HelpCommand());
     }
 
     /**
@@ -48,7 +49,7 @@ public class CommandManager {
             /*如果第一个空格前的指令前缀是 / 并且 是 / + command其中之一的名字*/
             if(args[0].startsWith(suffix) && args[0].equalsIgnoreCase(suffix + command.getName()) ){
                 /*如果command的名字是login 或者 register*/
-                if(command.getName().equals("login") || command.getName().equals("register")){
+                if(command.getName().equals("login") || command.getName().equals("register")|| command.getName().equals("help")){
                    /*进行非空判断 */
                     if(!(command.execute(args,channel) == null)){
                         return Type.COMMAND;
@@ -62,7 +63,7 @@ public class CommandManager {
                         /*进行非空判断 */
                         if(!(command.execute(args,channel) == null)){
                             return Type.COMMAND;
-                        }else {
+                        }else{
                             System.out.println("格式出错");
                             return Type.ERROR;
                         }
@@ -84,4 +85,9 @@ public class CommandManager {
         }
         return Type.CHAT;
     }
+
+    public List<Command> getCommands() {
+        return commands;
+    }
+
 }
