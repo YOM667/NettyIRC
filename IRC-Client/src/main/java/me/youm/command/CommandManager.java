@@ -28,7 +28,6 @@ public class CommandManager {
         this.commands = new ArrayList<>();
         this.commands.add(new ExitCommand());
         this.commands.add(new NickCommand());
-        this.commands.add(new KickCommand());
         this.commands.add(new LoginCommand());
         this.commands.add(new RegisterCommand());
         this.commands.add(new INFOCommand());

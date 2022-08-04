@@ -8,7 +8,6 @@ public class User implements Serializable {
     private String userName = "";
     private String passWord= "";
     private String nickName= "";
-
     private Status status;
 
 
@@ -69,6 +68,7 @@ public class User implements Serializable {
                 "userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
                 ", nickName='" + nickName + '\'' +
+                ", Stauts='" + status.name()  + '\'' +
                 '}';
     }
 

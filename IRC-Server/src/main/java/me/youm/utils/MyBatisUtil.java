@@ -15,7 +15,7 @@ public class MyBatisUtil {
     static {
         try {
             /*指定mybatis的config路径*/
-            String resource = "me.youm/mapper/UserMapper.xml";
+            String resource = "mybatis-config.xml";
             InputStream inputStream = Resources.getResourceAsStream(resource);
             sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         }catch (Exception e){
