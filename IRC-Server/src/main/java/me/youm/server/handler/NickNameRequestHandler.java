@@ -14,7 +14,7 @@ public class NickNameRequestHandler extends SimpleChannelInboundHandler<NickName
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, NickNameRequestPacket nickNameRequestPacket) throws Exception {
-        UserService userService = UserServiceFactory.getUserService();
+        UserService userService = UserServiceFactory.getUserServiceSql();
         boolean update = userService.updateNickName(nickNameRequestPacket.getUser());
         NickNameResponsePacket responsePacket;
         if (update) {

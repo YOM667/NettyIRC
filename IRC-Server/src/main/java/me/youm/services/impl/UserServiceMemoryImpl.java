@@ -1,6 +1,7 @@
-package me.youm.services;
+package me.youm.services.impl;
 
 import me.youm.entity.User;
+import me.youm.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

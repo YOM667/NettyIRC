@@ -24,8 +24,9 @@ public class INFORequestHandler extends SimpleChannelInboundHandler<INFORequestP
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, INFORequestPacket infoRequestPacket) throws Exception {
         Session session = SessionFactory.getSession();
         String userName = session.getUserName(channelHandlerContext.channel());
-        UserService userService = UserServiceFactory.getUserService();
-        User userInfo = userService.getUserInfo(userName);
+//        UserService userService = UserServiceFactory.getUserService();
+//        User userInfo = userService.getUserInfo(userName);
+        User userInfo = UserServiceFactory.getUserServiceSql().getUserInfo(userName);
         INFOResponsePacket infoResponsePacket;
         if (infoRequestPacket.isWant()) {
             infoResponsePacket = new INFOResponsePacket(userInfo,"获取成功",true);

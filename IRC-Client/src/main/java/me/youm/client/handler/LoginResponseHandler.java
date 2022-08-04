@@ -20,11 +20,10 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
      * 读取LoginResponsePacket数据包的方法
      * @param channelHandlerContext ChannelHandlerContext对象
      * @param loginResponseMessage  LoginResponsePacket数据包
-     * @throws Exception 异常
      */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginResponsePacket loginResponseMessage)  {
-        System.out.println(loginResponseMessage.isSuccess() +" | " + loginResponseMessage.getReason());
+        System.out.println(loginResponseMessage.isSuccess() +" | " + loginResponseMessage.getReason() + " | " + loginResponseMessage.getUser());
         writeUser(loginResponseMessage.getUser());
     }
 

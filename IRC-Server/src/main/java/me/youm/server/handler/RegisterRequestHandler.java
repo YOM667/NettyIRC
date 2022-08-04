@@ -16,7 +16,7 @@ public class RegisterRequestHandler extends SimpleChannelInboundHandler<Register
 
         User user = registerRequestMessage.getUser();
         RegisterResponsePacket responseMessage;
-        boolean register = UserServiceFactory.getUserService().register(user);
+        boolean register = UserServiceFactory.getUserServiceSql().register(user);
         if (register) {
             responseMessage = new RegisterResponsePacket(true, "注册成功",user.getUserName(),user.getPassWord(),user.getNickName());
         } else {

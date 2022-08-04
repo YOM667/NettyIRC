@@ -20,7 +20,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
         String passWord = loginRequestMessage.getPassWord();
 
         LoginResponsePacket responseMessage;
-        UserService userService = UserServiceFactory.getUserService();
+        UserService userService = UserServiceFactory.getUserServiceSql();
         boolean login = userService.login(userName, passWord);
         User userInfo = userService.getUserInfo(userName);
         if (login) {
