@@ -29,7 +29,7 @@ public class ChatClientInitializer extends ChannelInitializer<SocketChannel> {
     private final INFOResponseHandler INFO_HANDLER = new INFOResponseHandler();
     /*ChatGroupResponseHandler 群聊消息Response事件Handler*/
     private final ChatGroupResponseHandler CHAT_GROUP_HANDLER = new ChatGroupResponseHandler();
-
+    private final BanUserResponseHandler BAN_USER_HANDLER = new BanUserResponseHandler();
     /**
      * TODO 初始化Channel方法
      * @param socketChannel SocketChannel对象
@@ -50,5 +50,6 @@ public class ChatClientInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(NICK_NAME_HANDLER);
         pipeline.addLast(INFO_HANDLER);
         pipeline.addLast(CHAT_GROUP_HANDLER);
+        pipeline.addLast(BAN_USER_HANDLER);
     }
 }

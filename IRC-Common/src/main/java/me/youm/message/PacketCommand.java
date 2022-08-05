@@ -14,4 +14,6 @@ public interface PacketCommand {
     Byte INFORequest = 8;
     Byte ChatGroupRequest = 9;
     Byte ChatGroupResponse = 10;
+    Byte BanUserRequest = 11;
+    Byte BanUserResponse = 12;
 }

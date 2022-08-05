@@ -35,4 +35,6 @@ public interface UserService {
      * @return 返回用户对象
      */
     User getUserInfo(String username);
+
+    boolean banUser(String name);
 }

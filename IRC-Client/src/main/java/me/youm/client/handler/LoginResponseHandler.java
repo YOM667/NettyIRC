@@ -36,5 +36,6 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
         u.setUserName(user.getUserName());
         u.setPassWord(user.getPassWord());
         u.setNickName(user.getNickName());
+        u.setStatus(user.getStatus());
     }
 }

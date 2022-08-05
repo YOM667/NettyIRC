@@ -73,4 +73,9 @@ public class UserServiceMemoryImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public boolean banUser(String name) {
+        return false;
+    }
 }

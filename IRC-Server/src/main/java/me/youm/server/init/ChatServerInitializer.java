@@ -18,6 +18,7 @@ public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
     private final NickNameRequestHandler NICK_NAME_HANDLER = new NickNameRequestHandler();
     private final INFORequestHandler INFO_HANDLER = new INFORequestHandler();
     private final ChatGroupRequestHandler CHAT_GROUP_HANDLER = new ChatGroupRequestHandler();
+    private final BanUserRequestHandler BAN_USER_HANDLER = new BanUserRequestHandler();
     @Override
     protected void initChannel(SocketChannel socketChannel)  {
         System.out.println("有客户端进入: "+socketChannel.remoteAddress());
@@ -31,5 +32,6 @@ public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(NICK_NAME_HANDLER);
         pipeline.addLast(INFO_HANDLER);
         pipeline.addLast(CHAT_GROUP_HANDLER);
+        pipeline.addLast(BAN_USER_HANDLER);
     }
 }

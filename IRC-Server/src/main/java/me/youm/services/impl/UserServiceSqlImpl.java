@@ -73,4 +73,23 @@ public class UserServiceSqlImpl implements UserService {
             session.close();
         }
     }
+
+    @Override
+    public boolean banUser(String name) {
+        SqlSession session = MyBatisUtil.getSession();
+        try {
+            User userInfo = getUserInfo(name);
+            UserMapper userMapper = session.getMapper(UserMapper.class);
+            userMapper.deleteUser(userInfo);
+            userMapper.updateAfter(userInfo.getId());
+            userMapper.updateAfterDelete(userInfo.getId());
+            session.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            session.close();
+        }
+        return true;
+    }
 }
