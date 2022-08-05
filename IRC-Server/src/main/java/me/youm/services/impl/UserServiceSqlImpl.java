@@ -68,7 +68,6 @@ public class UserServiceSqlImpl implements UserService {
         UserMapper userMapper = session.getMapper(UserMapper.class);
         try {
             User user = userMapper.selectUserByName(username);
-            System.out.println(user.toString());
             return user;
         } finally {
             session.close();

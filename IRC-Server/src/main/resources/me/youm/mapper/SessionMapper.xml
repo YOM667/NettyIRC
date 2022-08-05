@@ -1,0 +1,9 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="me.youm.dao.UserMapper">
+    <insert id="registerUser" parameterType="me.youm.entity.User">
+        insert into talkroom.user (id, userName, passWord, nickName, Status) values (#{id},#{userName},#{passWord},#{nickName},#{status});
+    </insert>
+</mapper>
