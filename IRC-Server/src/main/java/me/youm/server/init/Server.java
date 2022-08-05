@@ -9,13 +9,16 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 @SuppressWarnings("all")
 public class Server {
     private int port;
+    private String host;
+
 
     public Server() {
-        this(1145);
+        this(1145,"0.0.0.0");
     }
 
-    public Server(int port) {
+    public Server(int port,String host) {
         this.port = port;
+        this.host = host;
     }
     public int getPort() {
         return port;
@@ -24,7 +27,13 @@ public class Server {
     public void setPort(int port) {
         this.port = port;
     }
+    public String getHost() {
+        return host;
+    }
 
+    public void setHost(String host) {
+        this.host = host;
+    }
     /**
      * TODO 启动bootstrap服务端
      */
