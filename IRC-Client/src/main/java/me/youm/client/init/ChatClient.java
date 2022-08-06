@@ -27,7 +27,7 @@ public class ChatClient {
      * 单例设计模式
      */
     public static ChatClient chatClient = new ChatClient();
-
+    private Channel channel;
     /**
      * TODO 获取实例
      * @return ChatClient对象
@@ -63,7 +63,7 @@ public class ChatClient {
             .group(group)
             .channel(NioSocketChannel.class)
             .handler(new ChatClientInitializer());
-            Channel channel = bootstrap.connect("127.0.0.1", 1145).sync().channel();
+            channel= bootstrap.connect("127.0.0.1", 1145).sync().channel();
             /*调用各种方法,以后会加入多线程*/
             // ------------------------------------------------------
             init();
@@ -89,6 +89,10 @@ public class ChatClient {
      */
     public CommandManager getCommandManager() {
         return commandManager;
+    }
+
+    public Channel getChannel() {
+        return channel;
     }
 
     /**

@@ -33,6 +33,7 @@ public class CommandManager {
         this.commands.add(new INFOCommand());
         this.commands.add(new HelpCommand());
         this.commands.add(new BanUserCommand());
+        this.commands.add(new PersonalSendCommand());
     }
 
     /**

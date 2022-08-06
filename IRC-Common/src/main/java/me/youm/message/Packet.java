@@ -23,7 +23,8 @@ public abstract class Packet implements Serializable {
         packetType.put(PacketCommand.ChatGroupRequest, ChatGroupRequestPacket.class);
         packetType.put(PacketCommand.BanUserResponse, BanUserResponsePacket.class);
         packetType.put(PacketCommand.BanUserRequest, BanUserRequestPacket.class);
-
+        packetType.put(PacketCommand.ChatPersonalRequest,ChatPersonalRequestPacket.class );
+        packetType.put(PacketCommand.ChatPersonalResponse,ChatPersonalResponsePacket.class);
     }
 
 
