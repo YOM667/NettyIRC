@@ -9,6 +9,8 @@ import me.youm.entity.Message;
 import me.youm.entity.User;
 import me.youm.message.ChatGroupRequestPacket;
 import me.youm.message.ChatGroupResponsePacket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
@@ -23,6 +25,7 @@ import java.util.Scanner;
  */
 @SuppressWarnings("all")
 public class ChatClient {
+    private static final Logger log = LogManager.getLogger(ChatClient.class);
     /**
      * 单例设计模式
      */
@@ -110,10 +113,10 @@ public class ChatClient {
                     }
                     break;
                 case COMMAND:
-                    System.out.println("发送了指令");
+                    log.info("发送了指令");
                     break;
                 case ERROR:
-                    System.out.println("报错");
+                    log.info("报错");
                     break;
                 default:{
                 }

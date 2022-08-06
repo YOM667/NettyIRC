@@ -6,12 +6,14 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @SuppressWarnings("all")
 public class Server {
+    public static final Logger log = LogManager.getLogger(Server.class);
     private int port;
     private String host;
-
-
     public Server() {
         this(1145,"0.0.0.0");
     }
@@ -44,7 +46,7 @@ public class Server {
         EventLoopGroup worker = new NioEventLoopGroup();
         EventLoopGroup boss = new NioEventLoopGroup();
         try {
-            System.out.println("服务器启动");
+            log.info("服务器启动");
             ServerBootstrap serverBootstrap = new ServerBootstrap()
             .group(boss, worker)
             .childHandler(new ChatServerInitializer())

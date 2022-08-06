@@ -3,7 +3,11 @@ package me.youm.client.handler;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import me.youm.client.init.ChatClient;
 import me.youm.message.NickNameResponsePacket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * @author : You_M
  * @date : 2022/8/2 14:54 25
@@ -12,6 +16,8 @@ import me.youm.message.NickNameResponsePacket;
  */
 @ChannelHandler.Sharable
 public class NickNameResponseHandler extends SimpleChannelInboundHandler<NickNameResponsePacket> {
+    private static final Logger log = LogManager.getLogger(ChatClient.class);
+
     /**
      * 读取NickNameResponsePacket数据包的方法
      * @param channelHandlerContext ChannelHandlerContext对象
@@ -20,6 +26,6 @@ public class NickNameResponseHandler extends SimpleChannelInboundHandler<NickNam
      */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, NickNameResponsePacket nickNameResponsePacket) throws Exception {
-        System.out.println(nickNameResponsePacket.isSuccess() +" | " + nickNameResponsePacket.getReason() );
+        log.info("{} | {}", nickNameResponsePacket.isSuccess() , nickNameResponsePacket.getReason() );
     }
 }

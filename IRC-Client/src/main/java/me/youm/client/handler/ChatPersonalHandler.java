@@ -7,6 +7,8 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import me.youm.client.init.ChatClient;
 import me.youm.entity.Message;
 import me.youm.message.ChatPersonalResponsePacket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
@@ -18,16 +20,17 @@ import java.util.Objects;
  */
 @ChannelHandler.Sharable
 public class ChatPersonalHandler extends SimpleChannelInboundHandler<ChatPersonalResponsePacket> {
+    private static final Logger log = LogManager.getLogger(ChatClient.class);
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ChatPersonalResponsePacket chatPersonalResponsePacket) throws Exception {
         Message message = chatPersonalResponsePacket.getMessage();
         ChatClient chatClient = ChatClient.getChatClient();
         if (chatPersonalResponsePacket.isSuccess() && !(message.getUser().equals(chatClient.getUser()))) {
-            System.out.println("[ " + message.getUser().getNickName() + " ] 私发给你了一条消息内容是:" + message.getMessage());
+            log.info("[ {} ] 私发给你了一条消息内容是: {}",message.getUser().getNickName() , message.getMessage());
         } else if (message.getUser().equals(chatClient.getUser()) && chatPersonalResponsePacket.isSuccess()) {
-            System.out.println(chatPersonalResponsePacket.isSuccess() + " | " + chatPersonalResponsePacket.getReason());
+            log.info("{} | {}" ,chatPersonalResponsePacket.isSuccess(), chatPersonalResponsePacket.getReason());
         }else {
-            System.out.println(chatPersonalResponsePacket.isSuccess() + " | " + chatPersonalResponsePacket.getReason());
+            log.info("{} | {}" ,chatPersonalResponsePacket.isSuccess(), chatPersonalResponsePacket.getReason());
         }
     }
 }

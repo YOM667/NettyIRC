@@ -3,10 +3,10 @@ package me.youm.services.impl;
 import me.youm.dao.UserMapper;
 import me.youm.entity.User;
 import me.youm.services.UserService;
-import me.youm.session.Session;
-import me.youm.session.SessionFactory;
 import me.youm.utils.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author : You_M
@@ -15,6 +15,7 @@ import org.apache.ibatis.session.SqlSession;
  * @className : UserServiceSqlImpl
  */
 public class UserServiceSqlImpl implements UserService {
+    private static final Logger log = LogManager.getLogger(UserServiceSqlImpl.class);
 
     @Override
     public boolean login(String username, String password) {
@@ -32,7 +33,7 @@ public class UserServiceSqlImpl implements UserService {
             }
             int isSuccess = userMapper.registerUser(user);
             if (isSuccess>0){
-                System.out.println("客户端用户注册成功");
+                log.info("客户端用户注册成功");
             }
             session.commit();
             return true;

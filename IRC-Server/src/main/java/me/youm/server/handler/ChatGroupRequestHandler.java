@@ -9,10 +9,12 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import me.youm.message.ChatGroupRequestPacket;
 import me.youm.message.ChatGroupResponsePacket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @ChannelHandler.Sharable
 public class ChatGroupRequestHandler extends SimpleChannelInboundHandler<ChatGroupRequestPacket> {
-
+    public static final Logger log = LogManager.getLogger(ChatGroupRequestHandler.class);
     @Override
     public void handlerAdded(ChannelHandlerContext ctx)  {
         Channel inComing = ctx.channel();
@@ -39,20 +41,20 @@ public class ChatGroupRequestHandler extends SimpleChannelInboundHandler<ChatGro
     @Override
     public void channelActive(ChannelHandlerContext ctx)  {
         Channel channel = ctx.channel();
-        System.out.println(channel.remoteAddress() + "  在线");
+        log.info("{}  在线",channel.remoteAddress());
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        System.out.println(channel.remoteAddress() + "  离线");
+        log.info( "{}  离线",channel.remoteAddress());
     }
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ChatGroupRequestPacket s) {
         Channel channel = channelHandlerContext.channel();
-        System.out.println("[用户  " + s.getMessage().getUser().getNickName() + "  说:]  " + s.getMessage().getMessage() + "\n");
+        log.info("[用户  {}  说:]  {}",s.getMessage().getUser().getNickName(), s.getMessage().getMessage());
         for (Channel c : channels) {
             if (c != channel) {
                 c.writeAndFlush(new ChatGroupResponsePacket("[用户  " + s.getMessage().getUser().getNickName() + "  说:]  " + s.getMessage().getMessage() ));

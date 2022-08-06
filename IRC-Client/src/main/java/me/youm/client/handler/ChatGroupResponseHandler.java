@@ -3,7 +3,10 @@ package me.youm.client.handler;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import me.youm.client.init.ChatClient;
 import me.youm.message.ChatGroupResponsePacket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author : You_M
@@ -13,6 +16,7 @@ import me.youm.message.ChatGroupResponsePacket;
  */
 @ChannelHandler.Sharable
 public class ChatGroupResponseHandler extends SimpleChannelInboundHandler<ChatGroupResponsePacket> {
+    private static final Logger log = LogManager.getLogger(ChatClient.class);
     /**
      * 读取ChatGroupResponsePacket数据包的方法
      * @param channelHandlerContext ChannelHandlerContext对象
@@ -21,6 +25,6 @@ public class ChatGroupResponseHandler extends SimpleChannelInboundHandler<ChatGr
      */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ChatGroupResponsePacket chatGroupResponsePacket) throws Exception {
-        System.out.println(chatGroupResponsePacket.getMessage());
+        log.info(chatGroupResponsePacket.getMessage());
     }
 }

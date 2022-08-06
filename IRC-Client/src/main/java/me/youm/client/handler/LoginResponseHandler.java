@@ -6,6 +6,8 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import me.youm.client.init.ChatClient;
 import me.youm.entity.User;
 import me.youm.message.LoginResponsePacket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author : You_M
@@ -15,6 +17,7 @@ import me.youm.message.LoginResponsePacket;
  */
 @ChannelHandler.Sharable
 public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponsePacket> {
+    private static final Logger log = LogManager.getLogger(ChatClient.class);
     private User u = ChatClient.getChatClient().getUser();
     /**
      * 读取LoginResponsePacket数据包的方法
@@ -23,7 +26,7 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
      */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginResponsePacket loginResponseMessage)  {
-        System.out.println(loginResponseMessage.isSuccess() +" | " + loginResponseMessage.getReason() + " | " + loginResponseMessage.getUser());
+        log.info("{} | {} | {}", loginResponseMessage.isSuccess() , loginResponseMessage.getReason() , loginResponseMessage.getUser());
         writeUser(loginResponseMessage.getUser());
     }
 

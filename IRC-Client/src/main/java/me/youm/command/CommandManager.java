@@ -3,6 +3,9 @@ package me.youm.command;
 import io.netty.channel.Channel;
 import me.youm.client.init.ChatClient;
 import me.youm.command.commands.*;
+import me.youm.util.PrinterUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,8 @@ import java.util.List;
  * @className : CommandManager
  */
 public class CommandManager {
+    private static final Logger log = LogManager.getLogger(PrinterUtil.class);
+
     /*指令前缀,这是IRC协议中 发出指令所需要的前缀*/
     public static String suffix = "/";
     /**
@@ -55,7 +60,7 @@ public class CommandManager {
                     if(!(command.execute(args,channel) == null)){
                         return Type.COMMAND;
                     }else {
-                        System.out.println("格式出错");
+                        log.debug("格式出错");
                         return Type.ERROR;
                     }
                 }else {
@@ -65,13 +70,13 @@ public class CommandManager {
                         if(!(command.execute(args,channel) == null)){
                             return Type.COMMAND;
                         }else{
-                            System.out.println("格式出错");
+                            log.debug("格式出错");
                             return Type.ERROR;
                         }
                     /*ChatClient的user对象中的isLogin方法是false*/
                     }else {
                         /*输出 请登录信息 */
-                        System.out.println("请登录");
+                        log.info("请登录");
                         return Type.ERROR;
                     }
                 }
@@ -81,7 +86,7 @@ public class CommandManager {
         /*如果commands中没有args[0]中的值*/
         if(args[0].startsWith(suffix)){
             /*输出没有这个指令*/
-            System.out.println("没有这个指令");
+            log.info("没有这个指令");
             return Type.ERROR;
         }
         return Type.CHAT;
