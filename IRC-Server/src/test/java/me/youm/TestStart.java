@@ -1,6 +1,8 @@
 package me.youm;
 
 import me.youm.api.ServerStart;
+import me.youm.services.ServicesSql;
+import me.youm.services.UseStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +15,8 @@ import org.apache.logging.log4j.Logger;
 public class TestStart {
     private static Logger log = LogManager.getLogger(TestStart.class);
     public static void main(String[] args) throws InterruptedException {
-        ServerStart start = new ServerStart();
+        ServerStart start = ServerStart.getStart();
+        start.config(UseStatus.CUSTOM,new ServicesSql());
         boolean run = start.run();
         log.info(run);
     }

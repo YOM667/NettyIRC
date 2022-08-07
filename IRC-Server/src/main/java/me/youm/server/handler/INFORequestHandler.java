@@ -3,6 +3,7 @@ package me.youm.server.handler;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import me.youm.dao.UserServicesMapper;
 import me.youm.entity.User;
 import me.youm.message.INFORequestPacket;
 import me.youm.message.INFOResponsePacket;
@@ -19,14 +20,14 @@ import me.youm.utils.SendPacket;
  * @className : INFORequestPacket
  */
 @ChannelHandler.Sharable
-public class INFORequestHandler extends SimpleChannelInboundHandler<INFORequestPacket> {
+public class INFORequestHandler extends SimpleChannelInboundHandler<INFORequestPacket> implements UserServicesMapper {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, INFORequestPacket infoRequestPacket) throws Exception {
         Session session = SessionFactory.getSession();
         String userName = session.getUserName(channelHandlerContext.channel());
 //        UserService userService = UserServiceFactory.getUserService();
 //        User userInfo = userService.getUserInfo(userName);
-        User userInfo = UserServiceFactory.getUserServiceSql().getUserInfo(userName);
+        User userInfo = setMapper.getStatus().isValue() ? setMapper.getUserService().getUserInfo(userName) : UserServiceFactory.getUserServiceSql().getUserInfo(userName);
         INFOResponsePacket infoResponsePacket;
         if (infoRequestPacket.isWant()) {
             infoResponsePacket = new INFOResponsePacket(userInfo,"获取成功",true);

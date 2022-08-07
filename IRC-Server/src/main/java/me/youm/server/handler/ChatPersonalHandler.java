@@ -4,6 +4,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import me.youm.dao.UserServicesMapper;
 import me.youm.entity.Message;
 import me.youm.message.ChatPersonalRequestPacket;
 import me.youm.message.ChatPersonalResponsePacket;
@@ -18,7 +19,7 @@ import me.youm.utils.SendPacket;
  * @className : ChatPersonalHandler
  */
 @ChannelHandler.Sharable
-public class ChatPersonalHandler extends SimpleChannelInboundHandler<ChatPersonalRequestPacket> {
+public class ChatPersonalHandler extends SimpleChannelInboundHandler<ChatPersonalRequestPacket> implements UserServicesMapper {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ChatPersonalRequestPacket chatPersonalRequestPacket) throws Exception {
         String to = chatPersonalRequestPacket.getUsername();

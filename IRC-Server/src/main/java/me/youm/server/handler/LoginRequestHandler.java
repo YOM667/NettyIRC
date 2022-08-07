@@ -3,6 +3,7 @@ package me.youm.server.handler;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import me.youm.dao.UserServicesMapper;
 import me.youm.entity.User;
 import me.youm.message.LoginRequestPacket;
 import me.youm.message.LoginResponsePacket;
@@ -13,14 +14,14 @@ import me.youm.session.SessionFactory;
 import me.youm.utils.SendPacket;
 
 @ChannelHandler.Sharable
-public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket> {
+public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket> implements UserServicesMapper {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginRequestPacket loginRequestMessage) throws Exception {
         String userName = loginRequestMessage.getUserName();
         String passWord = loginRequestMessage.getPassWord();
 
         LoginResponsePacket responseMessage;
-        UserService userService = UserServiceFactory.getUserServiceSql();
+        UserService userService = setMapper.getStatus().isValue() ? setMapper.getUserService() : UserServiceFactory.getUserServiceSql();
         boolean login = userService.login(userName, passWord);
         User userInfo = userService.getUserInfo(userName);
         if (login) {
