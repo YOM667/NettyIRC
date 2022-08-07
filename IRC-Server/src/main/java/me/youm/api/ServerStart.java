@@ -10,11 +10,11 @@ import me.youm.server.init.Server;
  * @projectName : KES-IRC-Server
  * @className : ServerStart
  */
-public abstract class ServerStart {
-    public ServerMain serverMain = new ServerMain();
+public class ServerStart {
+    private ServerMain serverMain = new ServerMain();
 
-    private void run(Server server){
-        serverMain.start(server);
+    public boolean run(){
+        return serverMain.start();
     }
 
 
