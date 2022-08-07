@@ -1,9 +1,8 @@
 package me.youm.services;
 
+import me.youm.LLLM;
 import me.youm.dao.UserMapper;
-import me.youm.entity.User;
-import me.youm.services.impl.UserServiceSqlImpl;
-import me.youm.utils.MyBatisUtil;
+import me.youm.entity.User;;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +14,7 @@ import org.apache.logging.log4j.Logger;
  * @className : ServicesSql
  */
 public class ServicesSql implements UserService{
-    private static final Logger log = LogManager.getLogger(UserServiceSqlImpl.class);
+    private static final Logger log = LogManager.getLogger(ServicesSql.class);
 
     @Override
     public boolean login(String username, String password) {
@@ -25,7 +24,7 @@ public class ServicesSql implements UserService{
 
     @Override
     public boolean register(User user) {
-        SqlSession session = MyBatisUtil.getSession();
+        SqlSession session = LLLM.getSession();
         try{
             UserMapper userMapper = session.getMapper(UserMapper.class);
             if(user == null){
@@ -47,7 +46,7 @@ public class ServicesSql implements UserService{
 
     @Override
     public boolean updateNickName(User user) {
-        SqlSession session = MyBatisUtil.getSession();
+        SqlSession session = LLLM.getSession();
         UserMapper userMapper = session.getMapper(UserMapper.class);
         try {
             getUserInfo(user.getUserName());
@@ -65,7 +64,7 @@ public class ServicesSql implements UserService{
 
     @Override
     public User getUserInfo(String username) {
-        SqlSession session = MyBatisUtil.getSession();
+        SqlSession session = LLLM.getSession();
         UserMapper userMapper = session.getMapper(UserMapper.class);
         try {
             User user = userMapper.selectUserByName(username);
@@ -77,7 +76,7 @@ public class ServicesSql implements UserService{
 
     @Override
     public boolean banUser(String name) {
-        SqlSession session = MyBatisUtil.getSession();
+        SqlSession session = LLLM.getSession();
         try {
             User userInfo = getUserInfo(name);
             UserMapper userMapper = session.getMapper(UserMapper.class);

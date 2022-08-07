@@ -13,7 +13,7 @@ import java.io.InputStream;
  * @projectName : KES-IRC-Server
  * @className : MybatisUtils
  */
-public class MybatisUtils {
+public class LLLM {
     private static SqlSessionFactory sessionFactory;
     static {
         try {
