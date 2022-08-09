@@ -4,6 +4,7 @@ import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import me.youm.client.InputThread;
 import me.youm.command.CommandManager;
 import me.youm.entity.Message;
 import me.youm.entity.User;
@@ -70,8 +71,9 @@ public class ChatClient {
             /*调用各种方法,以后会加入多线程*/
             // ------------------------------------------------------
             init();
-            run(channel);
+            run();
             //------------------------------------------------------
+            channel.closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -102,26 +104,9 @@ public class ChatClient {
      * TODO run方法由start方法调用,用来进行控制台输入输出
      * @param channel Channel对象 用来发送数据
      */
-    public void run(Channel channel){
-        Scanner scanner = new Scanner(System.in);
-        while (true){
-            String msg = scanner.nextLine();
-            switch (commandManager.contrast(msg,channel)){
-                case CHAT:
-                    if(this.user.isLogin()){
-                        channel.writeAndFlush(new ChatGroupRequestPacket(new Message(msg,user)));
-                    }
-                    break;
-                case COMMAND:
-                    log.info("发送了指令");
-                    break;
-                case ERROR:
-                    log.info("报错");
-                    break;
-                default:{
-                }
-            }
-
-        }
+    public void run(){
+        Thread t = new Thread(new InputThread());
+        t.start();
     }
+
 }
