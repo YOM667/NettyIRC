@@ -25,7 +25,7 @@ import java.util.Scanner;
  * @version 0.1.5
  */
 @SuppressWarnings("all")
-public class ChatClient {
+public class ChatClient implements Runnable {
     private static final Logger log = LogManager.getLogger(ChatClient.class);
     /**
      * 单例设计模式
@@ -64,14 +64,14 @@ public class ChatClient {
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = new Bootstrap()
-            .group(group)
-            .channel(NioSocketChannel.class)
-            .handler(new ChatClientInitializer());
+                    .group(group)
+                    .channel(NioSocketChannel.class)
+                    .handler(new ChatClientInitializer());
             channel= bootstrap.connect("127.0.0.1", 1145).sync().channel();
             /*调用各种方法,以后会加入多线程*/
             // ------------------------------------------------------
             init();
-            run();
+            startInputThread();
             //------------------------------------------------------
             channel.closeFuture().sync();
         } catch (Exception e) {
@@ -104,7 +104,11 @@ public class ChatClient {
      * TODO run方法由start方法调用,用来进行控制台输入输出
      * @param channel Channel对象 用来发送数据
      */
+    @Override
     public void run(){
+        start();
+    }
+    public void startInputThread(){
         Thread t = new Thread(new InputThread());
         t.start();
     }

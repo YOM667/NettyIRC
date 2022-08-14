@@ -18,8 +18,8 @@ public class ClientMain {
             "Do you like my code? my code is very very very very cool"+
             "if you love me , please add Please add my QQ: 1055965862";
     public static void main(String[] args) {
-        ChatClient.getChatClient().start();
-
+        Thread t = new Thread(ChatClient.getChatClient());
+        t.start();
     }
 
 }
