@@ -39,12 +39,19 @@ public final class ServerBuilder {
     public boolean run(){
         return serverMain.start();
     }
-    public void config(UseStatus status, UserService userService){
+    public void config(UseStatus status, UserService userService,int port,String host){
         setMapper.setUserService(userService);
         setMapper.setStatus(status);
+        serverMain.server.setHost(host);
+        serverMain.server.setPort(port);
     }
-    public void config(UseStatus status){
+    public void config(UseStatus status, UserService userService){
+        this.config(status,userService,1145,"127.0.0.1");
+    }
+    public void defult(UseStatus status){
         setMapper.setStatus(status);
     }
-
+    public void stop(){
+        serverStop.stopServer(serverMain);
+    }
 }

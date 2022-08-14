@@ -1,11 +1,12 @@
 package me.youm.server.init;
 
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
+import io.netty.channel.*;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
+import io.netty.handler.timeout.IdleStateHandler;
 import me.youm.server.handler.*;
 import me.youm.protocol.IRCMessageCodec;
 import me.youm.protocol.ProcotolFrameDecoder;
@@ -27,6 +28,27 @@ public class ChatServerInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel socketChannel)  {
         log.info("有客户端进入: {}" , socketChannel.remoteAddress());
         ChannelPipeline pipeline = socketChannel.pipeline();
+
+        socketChannel.pipeline().addLast(new IdleStateHandler(10,0,0));
+        /*
+           ChannelDuplexHandler 可以同时作为入栈和出栈 Handler
+        */
+        socketChannel.pipeline().addLast(new ChannelDuplexHandler(){
+            /**
+             * 用来触发特殊事件
+             * @param ctx ChannelHandlerContext
+             * @param evt 事件类型
+             * @throws Exception 异常
+             */
+            @Override
+            public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+                IdleStateEvent event =  (IdleStateEvent)evt;
+                if(event.state() == IdleState.READER_IDLE){
+                    log.debug("服务器已经超过 10 秒 没有收到数据了" );
+                }
+                super.userEventTriggered(ctx,evt);
+            }
+        });
         pipeline.addLast(new ProcotolFrameDecoder());
         pipeline.addLast(new IRCMessageCodec());
 //        pipeline.addLast(new ChatGroupHandler());
