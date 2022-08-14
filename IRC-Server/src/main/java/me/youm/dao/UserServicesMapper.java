@@ -1,6 +1,6 @@
 package me.youm.dao;
 
-import me.youm.api.ServerStart;
+import me.youm.api.ServerBuilder;
 import me.youm.api.SetMapper;
 
 /**
@@ -10,6 +10,6 @@ import me.youm.api.SetMapper;
  * @className : UserServicesMapper
  */
 public interface UserServicesMapper {
-    SetMapper setMapper = ServerStart.getStart().getSetMapper();
+    SetMapper setMapper = ServerBuilder.build().getSetMapper();
 
 }

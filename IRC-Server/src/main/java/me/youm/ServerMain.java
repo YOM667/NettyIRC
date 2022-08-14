@@ -9,8 +9,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ServerMain{
     private static final Logger log = LogManager.getLogger(ServerMain.class);
-    public static Server server = new Server();
-    public static Thread t = new Thread(server);
+    public Server server = new Server();
+    public Thread t = new Thread(server);
     public boolean start(int port,String host){
         server.setPort(port);
         server.setHost(host);
@@ -33,5 +33,13 @@ public class ServerMain{
         }
         return server.getIS_SUCCESS().get();
     }
-
+    public void stop(){
+        server.stop();
+    }
+    public String getHost(){
+        return server.getHost();
+    }
+    public int getPort(){
+        return server.getPort();
+    }
 }

@@ -29,18 +29,18 @@ public class Server implements Runnable{
         this.port = port;
         this.host = host;
     }
-    public int getPort() {
+    public synchronized int getPort() {
         return port;
     }
 
-    public void setPort(int port) {
+    public  void setPort(int port) {
         this.port = port;
     }
-    public String getHost() {
+    public  synchronized String getHost() {
         return host;
     }
     private CountDownLatch latch = new CountDownLatch(1);
-
+    private Channel channel;
     public void setHost(String host) {
         this.host = host;
     }
@@ -92,12 +92,25 @@ public class Server implements Runnable{
                     }
                 }
             });
+            channel = future.channel();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             boss.shutdownGracefully();
             worker.shutdownGracefully();
+        }
+    }
+    public void stop(){
+        try {
+            if (channel != null) {
+                log.info("http server is stopping listen port {} ...", port);
+                channel.close();
+                channel = null;
+                log.info("http server is stopped to listen port {} !", port);
+            }
+        } catch (Exception e) {
+            log.error("close netty http server exception", e);
         }
     }
 }

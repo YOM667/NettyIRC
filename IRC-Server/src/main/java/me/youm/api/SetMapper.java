@@ -1,9 +1,7 @@
 package me.youm.api;
 
-import com.sun.istack.internal.NotNull;
 import me.youm.services.UseStatus;
 import me.youm.services.UserService;
-import me.youm.services.UserServiceFactory;
 
 /**
  * @author : You_M
@@ -22,7 +20,6 @@ public class SetMapper {
     public void setStatus(UseStatus status) {
         this.status = status;
     }
-
     public UserService getUserService() {
         return userService;
     }
